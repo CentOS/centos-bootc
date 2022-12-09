@@ -1,0 +1,50 @@
+# These are packages that are related to configuring parts of the system.
+# It is intended to be kept generic so that it may be shared downstream with
+# RHCOS.
+
+packages:
+  # Configuring SSH keys, cloud provider check-in, etc
+  # TODO: needs Ignition kargs
+  # - afterburn afterburn-dracut
+  # NTP support
+  - chrony
+  # Storage configuration/management
+  ## cloud-utils-growpart - For growing root partition
+  - cifs-utils
+  - cloud-utils-growpart
+  - cryptsetup
+  - device-mapper-multipath
+  - e2fsprogs
+  - iscsi-initiator-utils
+  - lvm2
+  - mdadm
+  - sg3_utils
+  - xfsprogs
+  # User configuration
+  - passwd
+  - shadow-utils
+  - acl
+  # SELinux policy
+  - selinux-policy-targeted
+  # There are things that write outside of the journal still (such as the
+  # classic wtmp, etc.). auditd also writes outside the journal but it has its
+  # own log rotation.
+  # Anything package layered will also tend to expect files dropped in
+  # /etc/logrotate.d to work. Really, this is a legacy thing, but if we don't
+  # have it then people's disks will slowly fill up with logs.
+  - logrotate
+  # Boost starving threads
+  # https://github.com/coreos/fedora-coreos-tracker/issues/753
+  - stalld
+  - ssh-key-dir
+
+postprocess:
+  # Make kdump work on firstboot
+  - |
+    #!/usr/bin/env bash
+    # Make kdump ignore `ignition.firstboot` when copying kargs from
+    # the running kernel to the kdump kernel when passing to be kexec.
+    # This makes it so kdump can be set up on the very first boot.
+    # Upstream request to have this upstream so we can stop carrying it here:
+    # https://lists.fedoraproject.org/archives/list/kexec@lists.fedoraproject.org/thread/5P4WIJLW2TSGF4PZGRZGOXYML4RXZU23/
+    sed -i -e 's/KDUMP_COMMANDLINE_REMOVE="/KDUMP_COMMANDLINE_REMOVE="ignition.firstboot /' /etc/sysconfig/kdump

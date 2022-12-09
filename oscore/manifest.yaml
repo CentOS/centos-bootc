@@ -1,0 +1,202 @@
+releasever: 37
+
+repos:
+  - fedora
+  - fedora-updates
+
+metadata:
+  name: fedora-oscore
+  summary: Fedora OSCore
+
+# Modern defaults we want
+boot-location: modules
+tmp-is-dir: true
+# This one at least historically broke compatibility with Anaconda, but
+# let's use it by default now.
+machineid-compat: false
+# Be minimal
+recommends: false
+
+ignore-removed-users:
+  - root
+ignore-removed-groups:
+  - root
+etc-group-members:
+  - wheel
+  - sudo
+  - systemd-journal
+  - adm
+
+check-passwd:
+  type: "file"
+  filename: "passwd"
+check-groups:
+  type: "file"
+  filename: "group"
+
+include:
+  - bootable-rpm-ostree.yaml
+  - file-transfer.yaml
+  - networking-tools.yaml
+  - system-configuration.yaml
+  - user-experience.yaml
+  - shared-workarounds.yaml
+
+conditional-include:
+  - if: basearch != "s390x"
+    # And remove some cruft from grub2
+    include: grub2-removals.yaml
+
+remove-from-packages:
+  # Generally we expect other tools to do this (e.g. Ignition or cloud-init)
+  - [systemd, /usr/bin/systemd-firstboot,
+              /usr/lib/systemd/system/systemd-firstboot.service,
+              /usr/lib/systemd/system/sysinit.target.wants/systemd-firstboot.service]
+  # We don't want auto-generated mount units. See also
+  # https://github.com/systemd/systemd/issues/13099
+  - [systemd-udev, /usr/lib/systemd/system-generators/systemd-gpt-auto-generator]
+  # Drop some buggy sysusers fragments which do not match static IDs allocation:
+  # https://bugzilla.redhat.com/show_bug.cgi?id=2105177
+  - [dbus-common, /usr/lib/sysusers.d/dbus.conf]
+
+automatic-version-prefix: "${releasever}.<date:%Y%m%d>"
+mutate-os-release: "${releasever}"
+
+packages:
+  # We include this for historical reasons
+  - fedora-repos-ostree
+  # fedora-repos-modular was converted into its own subpackage in f33
+  # Continue to include it in case users want to use it.
+  - fedora-repos-modular
+  # Include and set the default editor
+  - nano nano-default-editor
+  # Security
+  - polkit
+  # Containers
+  - systemd-container catatonit
+  - fuse-overlayfs slirp4netns
+  # support for old style CNI networks and name resolution for
+  # podman containers with CNI networks
+  # https://github.com/coreos/fedora-coreos-tracker/issues/519
+  # https://github.com/coreos/fedora-coreos-tracker/issues/1128#issuecomment-1071338097
+  - containernetworking-plugins podman-plugins dnsmasq
+  # For podman v4 netavark gets pulled in but it only recommends
+  # aardvark-dns (which provides name resolution based on container
+  # names). This functionality was previously provided by dnsname from
+  # podman-plugins in the podman v3 stack.
+  # See https://github.com/containers/netavark/pull/217
+  - aardvark-dns
+  # Since we need `containernetworking-plugins` installed to continue
+  # to support CNI networks we need to also explicitly install
+  # `netavark` so we get both of them installed since both of them
+  # provide `container-network-stack`.
+  # https://github.com/coreos/fedora-coreos-tracker/issues/1128#issuecomment-1071458717
+  - netavark
+  # Minimal NFS client
+  - nfs-utils-coreos
+  # Active Directory support
+  - adcli
+  # Additional firewall support; we aren't including these in RHCOS or they
+  # don't exist in RHEL
+  - iptables-nft iptables-services
+  # WireGuard https://github.com/coreos/fedora-coreos-tracker/issues/362
+  - wireguard-tools
+  # Storage
+  - btrfs-progs
+  - WALinuxAgent-udev
+  # Allow communication between sudo and SSSD
+  # for caching sudo rules by SSSD.
+  # https://github.com/coreos/fedora-coreos-tracker/issues/445
+  - libsss_sudo
+  # SSSD; we only ship a subset of the backends
+  - sssd-client sssd-ad sssd-ipa sssd-krb5 sssd-ldap
+  # Used by admins interactively
+  - attr
+  - openssl
+  - lsof
+  # Provides terminal tools like clear, reset, tput, and tset
+  - ncurses
+  # file-transfer: note fuse-sshfs is not in RHEL
+  # so we can't put it in file-transfer.yaml
+  - fuse-sshfs
+  # Improved MOTD experience
+  - console-login-helper-messages-motdgen
+  # i18n
+  - kbd
+  # zram-generator (but not zram-generator-defaults) for F33 change
+  # https://github.com/coreos/fedora-coreos-tracker/issues/509
+  - zram-generator
+  # resolved was broken out to its own package in rawhide/f35
+  - systemd-resolved
+  # In F35+ need `iptables-legacy` package
+  # See https://github.com/coreos/fedora-coreos-tracker/issues/676#issuecomment-928028451
+  - iptables-legacy
+
+# Include the qemu-user-static-x86 package on aarch64 and s390x FCOS images
+# to allow access to the large inventory of containers only built for x86_64.
+# https://github.com/coreos/fedora-coreos-tracker/issues/1237
+packages-x86_64:
+  - irqbalance
+packages-ppc64le:
+  - irqbalance
+  - librtas
+  - powerpc-utils-core
+  - ppc64-diag-rtas
+packages-aarch64:
+  - irqbalance
+  - qemu-user-static-x86
+packages-s390x:
+  - qemu-user-static-x86
+
+# See https://github.com/coreos/bootupd
+arch-include:
+  x86_64: bootupd.yaml
+  aarch64: bootupd.yaml
+
+postprocess:
+  # Undo RPM scripts enabling units; we want the presets to be canonical
+  # https://github.com/projectatomic/rpm-ostree/issues/1803
+  - |
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+    rm -rf /etc/systemd/system/*
+    systemctl preset-all
+    rm -rf /etc/systemd/user/*
+    systemctl --user --global preset-all
+  # Default to iptables-nft. Otherwise, legacy wins. We can drop this once/if we
+  # remove iptables-legacy. This is needed because alternatives don't work
+  # https://github.com/coreos/fedora-coreos-tracker/issues/677
+  # https://github.com/coreos/fedora-coreos-tracker/issues/676
+  - |
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+    ln -sf /usr/sbin/ip6tables-nft         /etc/alternatives/ip6tables
+    ln -sf /usr/sbin/ip6tables-nft-restore /etc/alternatives/ip6tables-restore
+    ln -sf /usr/sbin/ip6tables-nft-save    /etc/alternatives/ip6tables-save
+    ln -sf /usr/sbin/iptables-nft          /etc/alternatives/iptables
+    ln -sf /usr/sbin/iptables-nft-restore  /etc/alternatives/iptables-restore
+    ln -sf /usr/sbin/iptables-nft-save     /etc/alternatives/iptables-save
+
+# Things we don't expect to ship on the host.  We currently
+# have recommends: false so these could only come in via
+# hard requirement, in which case the build will fail.
+exclude-packages:
+  - python
+  - python2
+  - python2-libs
+  - python3
+  - python3-libs
+  - perl
+  - perl-interpreter
+  - nodejs
+  - grubby
+  - cowsay  # Just in case
+  # Let's make sure initscripts doesn't get pulled back in
+  # https://github.com/coreos/fedora-coreos-tracker/issues/220#issuecomment-611566254
+  - initscripts
+  # For (datacenter/cloud oriented) servers, we want to see the details by default.
+  # https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/thread/HSMISZ3ETWQ4ETVLWZQJ55ARZT27AAV3/
+  - plymouth
+  # Do not use legacy ifcfg config format in NetworkManager
+  # See https://github.com/coreos/fedora-coreos-config/pull/1991
+  - NetworkManager-initscripts-ifcfg-rh
