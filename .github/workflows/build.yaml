@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron:  '30 0,6,12,18 * * *'
   workflow_dispatch: {}
 
 env:
@@ -32,7 +34,7 @@ jobs:
         env:
           REGISTRY_CREDS: ${{ secrets.QUAY }}
         run: podman login -u="cgwalters+gha" -p="${REGISTRY_CREDS}" quay.io
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        if: github.event_name != 'pull_request'
       # Make force triggering a build always build the image
       - run: echo "force_initialize=1" >> $GITHUB_ENV
         if: github.event_name == 'workflow_dispatch'
