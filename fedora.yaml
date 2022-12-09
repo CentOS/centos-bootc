@@ -1,0 +1,28 @@
+releasever: 37
+
+repos:
+  - fedora
+  - fedora-updates
+
+metadata:
+  name: fedora-oscore
+  summary: Fedora OSCore
+
+include:
+  - oscore/manifest.yaml
+
+packages:
+  # We include this for historical reasons
+  - fedora-repos-ostree
+  # fedora-repos-modular was converted into its own subpackage in f33
+  # Continue to include it in case users want to use it.
+  - fedora-repos-modular
+  # file-transfer: note fuse-sshfs is not in RHEL
+  # so we can't put it in file-transfer.yaml
+  - fuse-sshfs
+  # Storage
+  - btrfs-progs
+  # In F35+ need `iptables-legacy` package
+  # See https://github.com/coreos/fedora-coreos-tracker/issues/676#issuecomment-928028451
+  - iptables-legacy
+  - nano-default-editor

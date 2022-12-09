@@ -1,12 +1,3 @@
-releasever: 37
-
-repos:
-  - fedora
-  - fedora-updates
-
-metadata:
-  name: fedora-oscore
-  summary: Fedora OSCore
 
 # Modern defaults we want
 boot-location: modules
@@ -63,13 +54,8 @@ automatic-version-prefix: "${releasever}.<date:%Y%m%d>"
 mutate-os-release: "${releasever}"
 
 packages:
-  # We include this for historical reasons
-  - fedora-repos-ostree
-  # fedora-repos-modular was converted into its own subpackage in f33
-  # Continue to include it in case users want to use it.
-  - fedora-repos-modular
   # Include and set the default editor
-  - nano nano-default-editor
+  - nano
   # Security
   - polkit
   # Containers
@@ -101,8 +87,6 @@ packages:
   - iptables-nft iptables-services
   # WireGuard https://github.com/coreos/fedora-coreos-tracker/issues/362
   - wireguard-tools
-  # Storage
-  - btrfs-progs
   - WALinuxAgent-udev
   # Allow communication between sudo and SSSD
   # for caching sudo rules by SSSD.
@@ -116,9 +100,6 @@ packages:
   - lsof
   # Provides terminal tools like clear, reset, tput, and tset
   - ncurses
-  # file-transfer: note fuse-sshfs is not in RHEL
-  # so we can't put it in file-transfer.yaml
-  - fuse-sshfs
   # Improved MOTD experience
   - console-login-helper-messages-motdgen
   # i18n
@@ -128,9 +109,6 @@ packages:
   - zram-generator
   # resolved was broken out to its own package in rawhide/f35
   - systemd-resolved
-  # In F35+ need `iptables-legacy` package
-  # See https://github.com/coreos/fedora-coreos-tracker/issues/676#issuecomment-928028451
-  - iptables-legacy
 
 # Include the qemu-user-static-x86 package on aarch64 and s390x FCOS images
 # to allow access to the large inventory of containers only built for x86_64.
@@ -181,11 +159,6 @@ postprocess:
 # have recommends: false so these could only come in via
 # hard requirement, in which case the build will fail.
 exclude-packages:
-  - python
-  - python2
-  - python2-libs
-  - python3
-  - python3-libs
   - perl
   - perl-interpreter
   - nodejs

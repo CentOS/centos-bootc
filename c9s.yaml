@@ -1,0 +1,12 @@
+releasever: stream9
+
+repos:
+  - baseos
+  - appstream
+
+metadata:
+  name: c9s-oscore
+  summary: CentOS 9 OSCore
+
+include:
+  - oscore/manifest.yaml

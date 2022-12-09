@@ -12,7 +12,7 @@ via `rpm-ostree compose image`.
 Here's an example command:
 
 ```
-$ sudo rpm-ostree compose image --authfile ~/.config/containers/myquay.json --cachedir=cache -i --format=registry oscore/manifest.yaml quay.io/cgwalters/fedora-oscore
+$ sudo rpm-ostree compose image --authfile ~/.config/containers/myquay.json --cachedir=cache -i --format=registry fedora.yaml quay.io/cgwalters/fedora-oscore
 ```
 
 More information at https://coreos.github.io/rpm-ostree/container/
