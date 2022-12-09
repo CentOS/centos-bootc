@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+env:
+  REGISTRY: quay.io/cgwalters
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["fedora", "c9s"]
+    container:
+      image: quay.io/fedora/fedora-coreos:testing-devel
+      options: "--user root --privileged -v /var/tmp:/var/tmp -v /tmp:/tmp"
+    steps:
+      - uses: actions/checkout@v3
+        # https://github.com/actions/checkout/issues/760
+      - name: Mark git checkout as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Install deps
+        run: rpm-ostree install distribution-gpg-keys
+      - name: Login to registry
+        shell: bash
+        env:
+          REGISTRY_CREDS: ${{ secrets.QUAY }}
+        run: podman login -u="cgwalters+gha" -p="${REGISTRY_CREDS}" quay.io
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+      # Make force triggering a build always build the image
+      - run: echo "force_initialize=1" >> $GITHUB_ENV
+        if: github.event_name == 'workflow_dispatch'
+      - name: Build ostree container
+        run: rpm-ostree compose image --format=registry ${force_initialize:+--initialize} ${{ matrix.os }}.yaml ${{ env.REGISTRY }}/${{ matrix.os }}-oscore
