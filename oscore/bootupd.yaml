@@ -16,6 +16,11 @@ packages-x86_64:
   - grub2 grub2-efi-x64 efibootmgr shim
   - microcode_ctl
 
+conditional-include:
+  - if: basearch != "s390x"
+    # And remove some cruft from grub2
+    include: grub2-removals.yaml
+
 postprocess:
   - |
     #!/bin/bash

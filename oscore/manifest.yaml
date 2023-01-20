@@ -26,6 +26,7 @@ check-groups:
   filename: "group"
 
 include:
+  - bootc.yaml
   - bootable-rpm-ostree.yaml
   - file-transfer.yaml
   - networking-tools.yaml
@@ -33,11 +34,6 @@ include:
   - user-experience.yaml
   - shared-workarounds.yaml
   - fwupd.yaml
-
-conditional-include:
-  - if: basearch != "s390x"
-    # And remove some cruft from grub2
-    include: grub2-removals.yaml
 
 remove-from-packages:
   # Generally we expect other tools to do this (e.g. Ignition or cloud-init)
@@ -57,8 +53,6 @@ mutate-os-release: "${releasever}"
 packages:
   # Include and set the default editor
   - nano
-  # Security
-  - polkit
   # Containers
   - systemd-container catatonit
   - fuse-overlayfs slirp4netns
@@ -155,6 +149,15 @@ postprocess:
     ln -sf /usr/sbin/iptables-nft          /etc/alternatives/iptables
     ln -sf /usr/sbin/iptables-nft-restore  /etc/alternatives/iptables-restore
     ln -sf /usr/sbin/iptables-nft-save     /etc/alternatives/iptables-save
+  # See: https://github.com/coreos/fedora-coreos-tracker/issues/1253
+  #      https://bugzilla.redhat.com/show_bug.cgi?id=2112857
+  #      https://github.com/coreos/rpm-ostree/issues/3918
+  # Temporary workaround to remove the SetGID binary from liblockfile that is
+  # pulled by the s390utils but not needed for /usr/sbin/zipl.
+  - |
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+    rm -f /usr/bin/dotlockfile
 
 # Things we don't expect to ship on the host.  We currently
 # have recommends: false so these could only come in via
