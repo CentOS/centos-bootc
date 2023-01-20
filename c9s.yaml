@@ -3,6 +3,7 @@ releasever: stream9
 repos:
   - baseos
   - appstream
+  - bootc-c9s
 
 metadata:
   name: c9s-oscore
