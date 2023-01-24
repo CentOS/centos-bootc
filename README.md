@@ -10,11 +10,11 @@ via `rpm-ostree compose image`.
 
 ### Fedora
 
-[quay.io/cgwalters/fedora-oscore](https://quay.io/repository/cgwalters/fedora-oscore?tab=tags&tag=latest)
+[ghcr.io/cgwalters/fedora-oscore](https://github.com/cgwalters/bootc-demo-base-images/pkgs/container/fedora-oscore)
 
 ### CentOS Stream 9
 
-[quay.io/cgwalters/c9s-oscore](https://quay.io/repository/cgwalters/fedora-oscore?tab=tags&tag=latest)
+[ghcr.io/cgwalters/c9s-oscore](https://github.com/cgwalters/bootc-demo-base-images/pkgs/container/c9s-oscore)
 
 ## What's in them?
 
