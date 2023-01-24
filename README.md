@@ -21,9 +21,9 @@ via `rpm-ostree compose image`.
 The [current manifest definitions](oscore/) were forked from Fedora CoreOS, then some things were
 removed such as `moby-engine` and `ignition` and `clevis`.
 
-The content set is obviously subject to change and debate.
+Then, `bootc` is a key addition.
 
-At the current time, these images do *not* contain `bootc`, but they will in the future.
+The content set is obviously subject to change and debate.
 
 Ideally, we support a workflow where even `rpm-ostree` can be removed after builds.
 
