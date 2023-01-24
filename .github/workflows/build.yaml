@@ -41,4 +41,4 @@ jobs:
       #- run: echo "force_initialize=1" >> $GITHUB_ENV
       #  if: github.event_name == 'workflow_dispatch'
       - name: Build ostree container
-        run: rpm-ostree compose image --format=registry ${force_initialize:+--initialize} ${{ matrix.os }}.yaml ${{ env.REGISTRY }}/${{ matrix.os }}-oscore
+        run: rpm-ostree compose image --format=registry ${force_initialize:+--initialize} ${{ matrix.os }}.yaml ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ matrix.os }}-oscore
