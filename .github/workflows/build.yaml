@@ -38,7 +38,7 @@ jobs:
         run: podman login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
       # Make force triggering a build always build the image
-      #- run: echo "force_initialize=1" >> $GITHUB_ENV
-      #  if: github.event_name == 'workflow_dispatch'
+      - run: echo "force_initialize=1" >> $GITHUB_ENV
+        if: github.event_name == 'workflow_dispatch'
       - name: Build ostree container
         run: rpm-ostree compose image --format=registry ${force_initialize:+--initialize} ${{ matrix.os }}.yaml ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ matrix.os }}-oscore
