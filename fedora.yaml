@@ -12,6 +12,12 @@ metadata:
 include:
   - oscore/manifest.yaml
 
+repo-packages:
+  - repo: bootc-fedora
+    packages:
+      - bootc
+      - bootupd
+
 packages:
   # We include this for historical reasons
   - fedora-repos-ostree
