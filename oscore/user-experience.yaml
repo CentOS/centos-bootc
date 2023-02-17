@@ -16,10 +16,8 @@ packages:
   - bash-completion
   - coreutils
   - file
-  - jq
   - less
   - sudo
-  - vim-minimal
   # File compression/decompression
   ## bsdtar - dependency of 35coreos-live dracut module
   - bsdtar
@@ -39,8 +37,6 @@ packages:
   # Container tooling
   - crun
   - podman
-  - runc
   - skopeo
-  - toolbox
   # nvme-cli for managing nvme disks
   - nvme-cli

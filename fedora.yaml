@@ -27,7 +27,6 @@ packages:
   - fedora-repos-modular
   # file-transfer: note fuse-sshfs is not in RHEL
   # so we can't put it in file-transfer.yaml
-  - fuse-sshfs
   # Storage
   - btrfs-progs
   # In F35+ need `iptables-legacy` package

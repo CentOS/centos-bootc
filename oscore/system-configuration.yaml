@@ -1,6 +1,4 @@
 # These are packages that are related to configuring parts of the system.
-# It is intended to be kept generic so that it may be shared downstream with
-# RHCOS.
 
 packages:
   # Configuring SSH keys, cloud provider check-in, etc
@@ -9,15 +7,8 @@ packages:
   # NTP support
   - chrony
   # Storage configuration/management
-  ## cloud-utils-growpart - For growing root partition
-  - cifs-utils
-  - cloud-utils-growpart
   - cryptsetup
-  - device-mapper-multipath
   - e2fsprogs
-  - iscsi-initiator-utils
-  - lvm2
-  - mdadm
   - sg3_utils
   - xfsprogs
   # User configuration

@@ -28,11 +28,9 @@ check-groups:
 include:
   - bootc.yaml
   - bootable-rpm-ostree.yaml
-  - file-transfer.yaml
   - networking-tools.yaml
   - system-configuration.yaml
   - user-experience.yaml
-  - shared-workarounds.yaml
   - fwupd.yaml
 
 remove-from-packages:
@@ -75,13 +73,9 @@ packages:
   - netavark
   # Minimal NFS client
   - nfs-utils-coreos
-  # Active Directory support
-  - adcli
   # Additional firewall support; we aren't including these in RHCOS or they
   # don't exist in RHEL
   - iptables-nft iptables-services
-  # WireGuard https://github.com/coreos/fedora-coreos-tracker/issues/362
-  - wireguard-tools
   - WALinuxAgent-udev
   # Allow communication between sudo and SSSD
   # for caching sudo rules by SSSD.
