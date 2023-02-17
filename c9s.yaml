@@ -3,7 +3,7 @@ releasever: stream9
 repos:
   - baseos
   - appstream
-  - coreos-continuous
+  - coreos-continuous-c9s
   - bootc-c9s
 
 metadata:
