@@ -53,8 +53,8 @@ mutate-os-release: "${releasever}"
 packages:
   # Include and set the default editor
   - nano
-  # Containers
-  - systemd-container catatonit
+  # TODO: Also consider dropping this
+  - systemd-container
   - fuse-overlayfs slirp4netns
   # support for old style CNI networks and name resolution for
   # podman containers with CNI networks
