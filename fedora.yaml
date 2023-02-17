@@ -3,6 +3,7 @@ releasever: 37
 repos:
   - fedora
   - fedora-updates
+  - coreos-continuous
   - bootc-fedora
 
 metadata:
@@ -16,7 +17,6 @@ repo-packages:
   - repo: bootc-fedora
     packages:
       - bootc
-      - bootupd
 
 packages:
   # We include this for historical reasons
