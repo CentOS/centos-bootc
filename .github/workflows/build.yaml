@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["fedora", "c9s"]
+        os: ["fedora", "c9s", "c9s-rt"]
     container:
       # Yes, we're using this as a *builder* image.
       image: quay.io/fedora/fedora-coreos:stable

@@ -1,0 +1,20 @@
+releasever: stream9
+
+repos:
+  - baseos
+  - appstream
+  - coreos-continuous-c9s
+  - bootc-c9s
+
+metadata:
+  name: c9s-oscore
+  summary: CentOS 9 OSCore
+
+repo-packages:
+  - repo: bootc-c9s
+    packages:
+      - bootc
+
+include:
+  - oscore/manifest.yaml
+
