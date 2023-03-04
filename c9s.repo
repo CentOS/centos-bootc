@@ -29,4 +29,3 @@ gpgcheck=1
 repo_gpgcheck=0
 enabled=1
 gpgkey=file:///usr/share/distribution-gpg-keys/centos/RPM-GPG-KEY-CentOS-Official
-g
