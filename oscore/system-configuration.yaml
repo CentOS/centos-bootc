@@ -15,6 +15,8 @@ packages:
   - passwd
   - shadow-utils
   - acl
+  # Manipulating the kernel keyring; used by bootc
+  - keyutils
   # SELinux policy
   - selinux-policy-targeted
   # There are things that write outside of the journal still (such as the
