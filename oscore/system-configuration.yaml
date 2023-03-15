@@ -1,5 +1,10 @@
 # These are packages that are related to configuring parts of the system.
 
+initramfs-args:
+  - "--no-hostonly"
+  - "--add"
+  - "tpm2-tss"  # We want this for systemd-cryptsetup tpm2 locking
+
 packages:
   # Configuring SSH keys, cloud provider check-in, etc
   # TODO: needs Ignition kargs
@@ -8,6 +13,8 @@ packages:
   - chrony
   # Storage configuration/management
   - cryptsetup
+  # Needed for tpm2 bound luks
+  - tpm2-tools
   - e2fsprogs
   - sg3_utils
   - xfsprogs
