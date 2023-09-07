@@ -6,7 +6,8 @@ packages:
  # https://gitlab.com/cki-project/kernel-ark/-/commit/32271d0cd9bd52d386eb35497c4876a8f041f70b
  # https://src.fedoraproject.org/rpms/kernel/c/f55c3e9ed8605ff28cb9a922efbab1055947e213?branch=rawhide
  - linux-firmware
- - bootc
+ # For now this will be shipped in rpm-ostree
+ # - bootc
  # Required by bootc install today, though we'll likely switch bootc to use a Rust crate instead of sgdisk
  - gdisk xfsprogs e2fsprogs dosfstools
 
