@@ -1,0 +1,13 @@
+
+# Yes, we're using FCOS as a buildroot
+image: quay.io/fedora/fedora-coreos:stable
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - rpm-ostree install distribution-gpg-keys
+    - rpm-ostree compose image --format=oci-archive fedora.yaml fedora.oci-archive
+
