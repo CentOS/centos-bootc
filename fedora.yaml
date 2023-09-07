@@ -1,10 +1,8 @@
-releasever: 37
+releasever: 38
 
 repos:
   - fedora
   - fedora-updates
-  - coreos-continuous-fedora
-  - bootc-fedora
 
 metadata:
   name: fedora-oscore
@@ -13,11 +11,6 @@ metadata:
 include:
   - oscore/manifest.yaml
   - oscore/kernel.yaml
-
-repo-packages:
-  - repo: bootc-fedora
-    packages:
-      - bootc
 
 packages:
   # We include this for historical reasons
