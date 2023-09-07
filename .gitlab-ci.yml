@@ -7,6 +7,9 @@ stages:
 
 build:
   stage: build
+  before_script:
+    # Log into the registry
+    - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
     - rpm-ostree compose image -i --format=ociarchive fedora.yaml fedora.oci-archive
