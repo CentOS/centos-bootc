@@ -6,11 +6,14 @@ stages:
   - build
 
 build:
+  variables:
+    COMPOSE_INITIALIZE: ""
+    FORCE: ""
   stage: build
   before_script:
     # Log into the registry
     - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
-    - rpm-ostree compose image --initialize --format=registry fedora.yaml ${CI_REGISTRY_IMAGE}/fedora
+    - rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry fedora.yaml ${CI_REGISTRY_IMAGE}/fedora
 
