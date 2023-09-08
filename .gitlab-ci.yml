@@ -6,6 +6,8 @@ stages:
   - build
 
 test-build:
+  only:
+    - merge_requests
   stage: build
   before_script:
     # Log into the registry
