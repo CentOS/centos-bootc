@@ -5,7 +5,18 @@ image: quay.io/fedora/fedora-coreos:stable
 stages:
   - build
 
-build:
+test-build:
+  stage: build
+  before_script:
+    # Log into the registry
+    - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - rpm-ostree install distribution-gpg-keys
+    - rpm-ostree compose image --initialize --format=ociarchive fedora.yaml fedora.ociarchive
+
+build-push:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   variables:
     COMPOSE_INITIALIZE: ""
     FORCE: ""
