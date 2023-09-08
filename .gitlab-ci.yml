@@ -6,6 +6,11 @@ stages:
   - build
 
 test-build:
+  parallel:
+    matrix:
+      - VARIANT:
+        - c9s
+        - fedora
   only:
     - merge_requests
   stage: build
@@ -14,9 +19,14 @@ test-build:
     - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
-    - rpm-ostree compose image --initialize --format=ociarchive fedora.yaml fedora.ociarchive
+    - rpm-ostree compose image --initialize --format=ociarchive ${VARIANT}.yaml ${VARIANT}.ociarchive
 
 build-push:
+  parallel:
+    matrix:
+      - VARIANT:
+        - c9s
+        - fedora
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   variables:
@@ -28,5 +38,5 @@ build-push:
     - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
-    - rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry fedora.yaml ${CI_REGISTRY_IMAGE}/fedora
+    - rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry ${VARIANT}.yaml ${CI_REGISTRY_IMAGE}/${VARIANT}-boot
 
