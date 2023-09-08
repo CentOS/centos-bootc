@@ -27,6 +27,7 @@ check-groups:
 
 include:
   - bootc.yaml
+  - initramfs.yaml
   - bootable-rpm-ostree.yaml
   - networking-tools.yaml
   - system-configuration.yaml
