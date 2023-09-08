@@ -30,7 +30,7 @@ build-push:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   variables:
-    COMPOSE_INITIALIZE: "1"
+    COMPOSE_INITIALIZE: ""
     FORCE: ""
   stage: build
   before_script:
