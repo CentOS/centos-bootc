@@ -13,11 +13,6 @@ include:
   - oscore/kernel.yaml
 
 packages:
-  # file-transfer: note fuse-sshfs is not in RHEL
-  # so we can't put it in file-transfer.yaml
-  # Storage
+  # Storage; it's used in Fedora workstation for example, so we will enable it here.
   - btrfs-progs
-  # In F35+ need `iptables-legacy` package
-  # See https://github.com/coreos/fedora-coreos-tracker/issues/676#issuecomment-928028451
-  - iptables-legacy
   - nano-default-editor

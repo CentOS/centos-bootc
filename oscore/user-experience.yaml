@@ -12,7 +12,7 @@ container-cmd:
 # RHCOS.
 packages:
   # Basic user tools
-  ## jq - parsing/interacting with JSON data
+  - jq # parsing/interacting with JSON data
   - bash-completion
   - coreutils
   - file
