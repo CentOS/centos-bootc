@@ -16,3 +16,9 @@ exclude-packages:
   # chosen as the package to satisfy the `kernel-core` dependency from
   # the kernel package.
   - kernel-debug-core
+
+# rpm-ostree can be an alias for bootc, we want to enable that here.
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    ln -sr /usr/bin/{rpm-ostree,bootc}
