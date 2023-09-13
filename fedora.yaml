@@ -5,12 +5,12 @@ repos:
   - fedora-updates
 
 metadata:
-  name: fedora-oscore
-  summary: Fedora OSCore
+  name: fedora-boot-tier1
+  summary: Fedora Bootable Tier 1
 
 include:
-  - oscore/manifest.yaml
-  - oscore/kernel.yaml
+  - tier-1/manifest.yaml
+  - tier-1/kernel.yaml
 
 packages:
   # Storage; it's used in Fedora workstation for example, so we will enable it here.
