@@ -19,7 +19,7 @@ via `rpm-ostree compose image`.
 
 ## What's in them?
 
-The [current manifest definitions](oscore/) were forked from Fedora CoreOS, but significantly
+The [current manifest definitions](tier-1/) were forked from Fedora CoreOS, but significantly
 cut down.
 
 The existing content set is obviously subject to change and debate.

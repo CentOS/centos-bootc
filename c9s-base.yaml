@@ -5,9 +5,9 @@ repos:
   - appstream
 
 metadata:
-  name: c9s-oscore
-  summary: CentOS 9 OSCore
+  name: c9s-boot-tier1
+  summary: CentOS 9 Bootable Tier 1
 
 include:
-  - oscore/manifest.yaml
+  - tier-1/manifest.yaml
 
