@@ -8,8 +8,6 @@ packages:
   - chrony
   # Storage configuration/management
   - cryptsetup
-  # Needed for tpm2 bound luks
-  - tpm2-tools
   - e2fsprogs
   - sg3_utils
   - xfsprogs
@@ -19,8 +17,6 @@ packages:
   - acl
   # Manipulating the kernel keyring; used by bootc
   - keyutils
-  # SELinux policy
-  - selinux-policy-targeted
   # There are things that write outside of the journal still (such as the
   # classic wtmp, etc.). auditd also writes outside the journal but it has its
   # own log rotation.

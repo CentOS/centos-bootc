@@ -8,11 +8,15 @@ stages:
 .base:
   parallel:
     matrix:
-      - TIER: [tier-1]
+      - TIER:
+          - tier-0
+          - tier-1
         OS: centos
         VERSION: [stream9]
         VARIANT: ["", "-rt"]
-      - TIER: [tier-1]
+      - TIER:
+          - tier-0
+          - tier-1
         OS: fedora
         VERSION: [38]
         VARIANT: [""]

@@ -1,0 +1,5 @@
+releasever: stream9
+
+repos:
+  - baseos
+  - appstream
