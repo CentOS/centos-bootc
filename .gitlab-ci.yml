@@ -5,12 +5,20 @@ image: quay.io/fedora/fedora-coreos:stable
 stages:
   - build
 
-test-build:
+.base:
   parallel:
     matrix:
-      - VARIANT:
-        - c9s
-        - fedora
+      - TIER: [tier-1]
+        OS: centos
+        VERSION: [stream9]
+        VARIANT: ["", "-rt"]
+      - TIER: [tier-1]
+        OS: fedora
+        VERSION: [38]
+        VARIANT: [""]
+
+test-build:
+  extends: .base
   only:
     - merge_requests
   stage: build
@@ -19,18 +27,14 @@ test-build:
     - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
-    - rpm-ostree compose image --initialize --format=ociarchive ${VARIANT}.yaml ${VARIANT}.ociarchive
+    - set -euo pipefail; rpm-ostree compose image --format=ociarchive --initialize ${OS}-${TIER}${VARIANT}-${VERSION}.yaml dest.oci-archive
 
 build-push:
-  parallel:
-    matrix:
-      - VARIANT:
-        - c9s
-        - fedora
+  extends: .base
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   variables:
-    COMPOSE_INITIALIZE: ""
+    COMPOSE_INITIALIZE: "1"
     FORCE: ""
   stage: build
   before_script:
@@ -38,5 +42,5 @@ build-push:
     - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
-    - rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry ${VARIANT}.yaml ${CI_REGISTRY_IMAGE}/${VARIANT}-boot
+    - set -euo pipefail; rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry ${OS}-${TIER}${VARIANT}-${VERSION}.yaml ${CI_REGISTRY_IMAGE}/${OS}-boot-${TIER}${VARIANT}:${VERSION}
 
