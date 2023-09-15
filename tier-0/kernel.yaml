@@ -1,0 +1,6 @@
+# Enable the Linux kernel; see also kernel-rt.
+packages:
+ - kernel
+
+exclude-packages:
+  - kernel-debug

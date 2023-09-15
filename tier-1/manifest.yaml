@@ -1,53 +1,10 @@
 
-# Modern defaults we want
-boot-location: modules
-tmp-is-dir: true
-# This one at least historically broke compatibility with Anaconda, but
-# let's use it by default now.
-machineid-compat: false
-# Be minimal
-recommends: false
-
-ignore-removed-users:
-  - root
-ignore-removed-groups:
-  - root
-etc-group-members:
-  - wheel
-  - sudo
-  - systemd-journal
-  - adm
-
-check-passwd:
-  type: "file"
-  filename: "passwd"
-check-groups:
-  type: "file"
-  filename: "group"
-
 include:
-  - bootc.yaml
-  - initramfs.yaml
-  - bootable-rpm-ostree.yaml
+  - manifest-tier-0.yaml
   - networking-tools.yaml
   - system-configuration.yaml
   - user-experience.yaml
   - fwupd.yaml
-
-remove-from-packages:
-  # Generally we expect other tools to do this (e.g. Ignition or cloud-init)
-  - [systemd, /usr/bin/systemd-firstboot,
-              /usr/lib/systemd/system/systemd-firstboot.service,
-              /usr/lib/systemd/system/sysinit.target.wants/systemd-firstboot.service]
-  # We don't want auto-generated mount units. See also
-  # https://github.com/systemd/systemd/issues/13099
-  - [systemd-udev, /usr/lib/systemd/system-generators/systemd-gpt-auto-generator]
-  # Drop some buggy sysusers fragments which do not match static IDs allocation:
-  # https://bugzilla.redhat.com/show_bug.cgi?id=2105177
-  - [dbus-common, /usr/lib/sysusers.d/dbus.conf]
-
-automatic-version-prefix: "${releasever}.<date:%Y%m%d>"
-mutate-os-release: "${releasever}"
 
 packages:
   # Include and set the default editor
@@ -113,11 +70,6 @@ packages-aarch64:
   - qemu-user-static-x86
 packages-s390x:
   - qemu-user-static-x86
-
-# See https://github.com/coreos/bootupd
-arch-include:
-  x86_64: bootupd.yaml
-  aarch64: bootupd.yaml
 
 postprocess:
   # Undo RPM scripts enabling units; we want the presets to be canonical

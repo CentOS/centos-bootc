@@ -1,0 +1,14 @@
+# Configuration for the initramfs
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    mkdir -p /usr/lib/dracut/dracut.conf.d
+    cat > /usr/lib/dracut/dracut.conf.d/01-bootc-nohostonly.conf
+    # We want a generic image; hostonly makes no sense as part of a server side build
+    hostonly=no
+    EOF
+    cat > /usr/lib/dracut/dracut.conf.d/49-tpm2-tss.conf << 'EOF'
+    # We want this for systemd-cryptsetup tpm2 locking
+    dracutmodules+=" tpm2-tss "
+    EOF
+  

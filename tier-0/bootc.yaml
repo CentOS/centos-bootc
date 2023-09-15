@@ -1,0 +1,25 @@
+# A relatively minimal base, but we also do include linux-firmware so
+# we can be directly booted on metal.
+packages:
+ - systemd
+ # linux-firmware now a recommends so let's explicitly include it
+ # https://gitlab.com/cki-project/kernel-ark/-/commit/32271d0cd9bd52d386eb35497c4876a8f041f70b
+ # https://src.fedoraproject.org/rpms/kernel/c/f55c3e9ed8605ff28cb9a922efbab1055947e213?branch=rawhide
+ - linux-firmware
+ - ostree
+ # For now this will be shipped in rpm-ostree
+ # - bootc
+ # Required by bootc install today, though we'll likely switch bootc to use a Rust crate instead of sgdisk
+ - gdisk xfsprogs e2fsprogs dosfstools
+
+exclude-packages:
+  # Exclude kernel-debug-core to make sure that it doesn't somehow get
+  # chosen as the package to satisfy the `kernel-core` dependency from
+  # the kernel package.
+  - kernel-debug-core
+
+# rpm-ostree can be an alias for bootc, we want to enable that here.
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    ln -sr /usr/bin/{rpm-ostree,bootc}

@@ -1,0 +1,5 @@
+include:
+  - centos-stream-9.yaml
+  - tier-0/kernel.yaml
+  - tier-0/manifest.yaml
+
