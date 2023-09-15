@@ -1,6 +1,8 @@
 
 include:
   - manifest-tier-0.yaml
+  - bootable-rpm-ostree.yaml
+  - firmware.yaml
   - networking-tools.yaml
   - system-configuration.yaml
   - user-experience.yaml
