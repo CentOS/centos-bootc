@@ -1,6 +1,5 @@
 
-# Yes, we're using FCOS as a buildroot
-image: quay.io/fedora/fedora-coreos:stable
+image: registry.gitlab.com/cgwalters-playground/sagano-builder/builder-centos:stream9
 
 stages:
   - build
@@ -26,9 +25,6 @@ test-build:
   only:
     - merge_requests
   stage: build
-  before_script:
-    # Log into the registry
-    - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - rpm-ostree install distribution-gpg-keys
     - set -euo pipefail; rpm-ostree compose image --format=ociarchive --initialize ${OS}-${TIER}${VARIANT}-${VERSION}.yaml dest.oci-archive
@@ -43,8 +39,7 @@ build-push:
   stage: build
   before_script:
     # Log into the registry
-    - echo "$CI_REGISTRY_PASSWORD" | podman login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+    - echo "$CI_REGISTRY_PASSWORD" | skopeo login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - rpm-ostree install distribution-gpg-keys
     - set -euo pipefail; rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry ${OS}-${TIER}${VARIANT}-${VERSION}.yaml ${CI_REGISTRY_IMAGE}/${OS}-boot-${TIER}${VARIANT}:${VERSION}
 
