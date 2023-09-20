@@ -1,5 +1,5 @@
 
-image: registry.gitlab.com/cgwalters-playground/sagano-builder/builder-centos:stream9
+image: registry.gitlab.com/cgwalters-playground/sagano-builder/base-centos:stream9
 
 stages:
   - build
