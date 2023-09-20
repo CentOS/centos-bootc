@@ -3,6 +3,7 @@ releasever: 38
 repos:
   - fedora
   - fedora-updates
+  - fedora-updates-testing
 
 include:
   - tier-0/manifest.yaml

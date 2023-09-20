@@ -3,6 +3,7 @@ releasever: 38
 repos:
   - fedora
   - fedora-updates
+  - fedora-updates-testing
 
 metadata:
   name: fedora-boot-tier1
