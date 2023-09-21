@@ -17,4 +17,6 @@ exclude-packages:
 postprocess:
   - |
     #!/usr/bin/env bash
-    ln -sr /usr/bin/{rpm-ostree,bootc}
+    if test ! -x /usr/bin/bootc && test -x /usr/bin/rpm-ostree; then
+      ln -sr /usr/bin/{rpm-ostree,bootc}
+    fi
