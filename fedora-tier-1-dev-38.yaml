@@ -1,0 +1,4 @@
+include: fedora-tier-1-38.yaml
+
+repos:
+  - copr-fedora-coreos-continuous
