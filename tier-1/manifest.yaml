@@ -7,6 +7,7 @@ include:
   - system-configuration.yaml
   - user-experience.yaml
   - fwupd.yaml
+  - persistent-journal.yaml
 
 packages:
   # Include and set the default editor
