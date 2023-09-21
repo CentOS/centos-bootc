@@ -37,15 +37,15 @@ users and passwords that way.
 
 # Image matrix (Fedora)
 
-- `registry.gitlab.com/cgwalters-playground/sagano/fedora-boot-tier-0:38`
-- `registry.gitlab.com/cgwalters-playground/sagano/fedora-boot-tier-1:38`
+- `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-0:38`
+- `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-1:38`
 
 # Image matrix (CentOS Stream 9)
 
-- `registry.gitlab.com/cgwalters-playground/sagano/centos-boot-tier-0:stream9`
-- `registry.gitlab.com/cgwalters-playground/sagano/centos-boot-tier-0-rt:stream9` (realtime kernel)
-- `registry.gitlab.com/cgwalters-playground/sagano/centos-boot-tier-1:stream9`
-- `registry.gitlab.com/cgwalters-playground/sagano/centos-boot-tier-1-rt:stream9` (realtime kernel)
+- `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-0:stream9`
+- `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-0-rt:stream9` (realtime kernel)
+- `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-1:stream9`
+- `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-1-rt:stream9` (realtime kernel)
 
 ## More about image sources
 
