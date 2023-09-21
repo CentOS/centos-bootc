@@ -1,0 +1,4 @@
+# Include this to enable fetching from COPRs/git
+
+repos:
+  - copr-fedora-coreos-continuous
