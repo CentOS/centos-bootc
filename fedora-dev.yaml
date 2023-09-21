@@ -2,3 +2,7 @@
 
 repos:
   - copr-fedora-coreos-continuous
+  - copr-fedora-bootc
+
+packages:
+  - bootc
