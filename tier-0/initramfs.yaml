@@ -12,5 +12,5 @@ postprocess:
     dracutmodules+=" tpm2-tss "
     EOF
     cat > /usr/lib/dracut/dracut.conf.d/01-sagano-base.conf << 'EOF'
-    dracutmodules+=" systemd-initrd base "
+    dracutmodules+=" kernel-modules dracut-systemd systemd-initrd base "
     EOF
