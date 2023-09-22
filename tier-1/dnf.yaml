@@ -1,0 +1,5 @@
+# A full dnf experience at build time, but right now
+# `dnf update` *client side* doesn't do much helpful...
+packages:
+  - dnf
+  - dnf-utils

@@ -3,6 +3,7 @@
 repos:
   - copr-fedora-coreos-continuous
   - copr-fedora-bootc
+  - copr-fedora-dnf
 
 packages:
   - bootc
