@@ -19,6 +19,7 @@ stages:
         OS: fedora
         VERSION: [38]
         VARIANT: ["", "-dev"]
+.default-target: fedora-tier-1-38
 
 test-build:
   extends: .base
