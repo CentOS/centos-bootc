@@ -34,9 +34,5 @@ packages:
   - kexec-tools
   # Remote Access
   - openssh-clients openssh-server
-  # Container tooling
-  - crun
-  - podman
-  - skopeo
   # nvme-cli for managing nvme disks
   - nvme-cli
