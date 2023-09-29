@@ -16,7 +16,6 @@ include:
 packages:
   # Include and set the default editor
   - nano
-  - fuse-overlayfs slirp4netns
   # Minimal NFS client
   - nfs-utils-coreos
   # Additional firewall support; we aren't including these in RHCOS or they
@@ -35,8 +34,6 @@ packages:
   - lsof
   # Provides terminal tools like clear, reset, tput, and tset
   - ncurses
-  # Improved MOTD experience
-  - console-login-helper-messages-motdgen
   # i18n
   - kbd
   # zram-generator (but not zram-generator-defaults) for F33 change
