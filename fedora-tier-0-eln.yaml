@@ -1,0 +1,9 @@
+releasever: 40
+
+repos:
+  - eln-baseos
+  - eln-appstream
+
+include:
+  - tier-0/manifest.yaml
+  - tier-0/kernel.yaml
