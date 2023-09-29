@@ -2,4 +2,3 @@
 # `dnf update` *client side* doesn't do much helpful...
 packages:
   - dnf
-  - dnf-utils

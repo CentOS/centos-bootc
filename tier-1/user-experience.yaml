@@ -22,9 +22,6 @@ packages:
   - tar
   - xz
   - zstd
-  # Improved MOTD experience
-  - console-login-helper-messages-issuegen
-  - console-login-helper-messages-profile
   # kdump support
   # https://github.com/coreos/fedora-coreos-tracker/issues/622
   - kexec-tools
