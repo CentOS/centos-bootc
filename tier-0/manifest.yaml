@@ -57,6 +57,8 @@ packages:
   # Even in tier-0, we have this.  If you don't want SELinux today, you'll need
   # to build a custom image.
   - selinux-policy-targeted
+  # And we want container-selinux because trying to layer it on later currently causes issues.
+  - container-selinux
   # Needed for tpm2 bound luks
   - tpm2-tools
 
