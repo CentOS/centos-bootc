@@ -1,5 +1,5 @@
 
-image: registry.gitlab.com/centos/cloud/sagano-builder/base-centos:stream9
+image: registry.gitlab.com/centos/cloud/sagano-builder/centos:stream9
 
 stages:
   - build
