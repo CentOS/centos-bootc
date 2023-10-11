@@ -5,6 +5,8 @@ stages:
   - build
 
 .base:
+  tags:
+    - platform-engineering
   parallel:
     matrix:
       - TIER:
