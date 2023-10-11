@@ -39,6 +39,8 @@ users and passwords that way.
 
 - `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-0:38`
 - `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-1:38`
+- `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-0:eln`
+- `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-1:eln`
 
 # Image matrix (CentOS Stream 9)
 
@@ -46,6 +48,13 @@ users and passwords that way.
 - `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-0-rt:stream9` (realtime kernel)
 - `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-1:stream9`
 - `registry.gitlab.com/centos/cloud/sagano/centos-boot-tier-1-rt:stream9` (realtime kernel)
+
+# Image matrix (Fedora development)
+
+These images pull from git main/master of RPMs using COPRs for selected projects.
+
+- `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-0-dev:38`
+- `registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-1-dev:38`
 
 ## More about image sources
 
