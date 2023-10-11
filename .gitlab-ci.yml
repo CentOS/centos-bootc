@@ -36,7 +36,6 @@ test-build:
     - merge_requests
   stage: build
   script:
-    - rpm-ostree install distribution-gpg-keys
     - set -euo pipefail; rpm-ostree compose image --format=ociarchive --initialize ${OS}-${TIER}${VARIANT}-${VERSION}.yaml dest.oci-archive
 
 build-push:
