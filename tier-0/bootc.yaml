@@ -13,10 +13,18 @@ exclude-packages:
   # the kernel package.
   - kernel-debug-core
 
-# rpm-ostree can be an alias for bootc, we want to enable that here.
 postprocess:
+  # rpm-ostree can be an alias for bootc, we want to enable that here.
   - |
     #!/usr/bin/env bash
     if test ! -x /usr/bin/bootc && test -x /usr/bin/rpm-ostree; then
       ln -sr /usr/bin/{rpm-ostree,bootc}
     fi
+  # XFS is our default filesystem
+  - |
+    #!/usr/bin/env bash
+    mkdir -p /usr/lib/bootc/install/
+    cat > /usr/lib/bootc/install/20-rhel.toml << EOF
+    [install]
+    root-fs-type = "xfs"
+    EOF
