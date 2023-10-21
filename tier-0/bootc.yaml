@@ -1,7 +1,9 @@
+include:
+  - ostree.yaml
+
 # The bootc components.
 packages:
  - systemd
- - ostree nss-altfiles
  # For now this will be shipped in rpm-ostree; TODO fix this by shipping a separate epackage
  # - bootc
  # Required by bootc install today, though we'll likely switch bootc to use a Rust crate instead of sgdisk
