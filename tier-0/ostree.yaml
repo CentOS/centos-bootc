@@ -1,0 +1,12 @@
+packages:
+ - ostree nss-altfiles
+
+postprocess:
+  # Set up default root config
+  - |
+    #!/usr/bin/env bash
+    mkdir -p /usr/lib/ostree
+    cat > /usr/lib/ostree/prepare-root.conf << EOF
+    [sysroot]
+    readonly = true
+    EOF
