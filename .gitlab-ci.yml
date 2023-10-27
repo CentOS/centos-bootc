@@ -19,9 +19,9 @@ stages:
           - tier-0
           - tier-1
         OS: fedora
-        VERSION: ["38", "eln"]
+        VERSION: ["eln"]
         VARIANT: ["", "-dev"]
-.default-target: fedora-tier-1-38
+.default-target: fedora-tier-1-eln
 
 test-build:
   extends: .base
