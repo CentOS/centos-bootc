@@ -42,9 +42,7 @@ packages:
   # resolved was broken out to its own package in rawhide/f35
   - systemd-resolved
 
-# Include the qemu-user-static-x86 package on aarch64 and s390x FCOS images
-# to allow access to the large inventory of containers only built for x86_64.
-# https://github.com/coreos/fedora-coreos-tracker/issues/1237
+# These are random architecture-specific packages
 packages-x86_64:
   - irqbalance
 packages-ppc64le:
@@ -54,9 +52,6 @@ packages-ppc64le:
   - ppc64-diag-rtas
 packages-aarch64:
   - irqbalance
-  - qemu-user-static-x86
-packages-s390x:
-  - qemu-user-static-x86
 
 postprocess:
   # Undo RPM scripts enabling units; we want the presets to be canonical
