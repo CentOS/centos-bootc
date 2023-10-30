@@ -44,4 +44,3 @@ build-push:
     - echo "$CI_REGISTRY_PASSWORD" | skopeo login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
     - set -euo pipefail; rpm-ostree compose image ${COMPOSE_INITIALIZE:+--initialize} ${FORCE:+--force-nocache} --format=registry ${OS}-${TIER}${VARIANT}-${VERSION}.yaml ${CI_REGISTRY_IMAGE}/${OS}-boot-${TIER}${VARIANT}:${VERSION}
-

@@ -1,0 +1,31 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args:
+          - --markdown-linebreak-ext=md
+      - id: check-docstring-first
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+        args:
+          - "--branch"
+          - "main"
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: detect-aws-credentials
+        args:
+          - --allow-missing-credentials
+      - id: check-json
+      - id: check-yaml
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.12.0
+    hooks:
+      - id: markdownlint
+  - repo: https://github.com/maxbrunet/pre-commit-renovate
+    rev: 35.82.0
+    hooks:
+      - id: renovate-config-validator
