@@ -91,3 +91,11 @@ More information at https://coreos.github.io/rpm-ostree/container/
 - (?) Fork https://gitlab.com/fedora/boot-container-base into something under https://gitlab.com/CentOS/cloud/ and start building C9S versions there?
 - https://gitlab.com/redhat/centos-stream
 
+# Badges
+
+| Badge                   | Description          | Service      |
+| ----------------------- | -------------------- | ------------ |
+| [![Renovate][1]][2]     | Dependencies         | Renovate     |
+
+[1]: https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovate
+[2]: https://renovatebot.com
