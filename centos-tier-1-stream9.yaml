@@ -2,4 +2,3 @@ include:
   - centos-stream-9.yaml
   - tier-1/kernel.yaml
   - tier-1/manifest.yaml
-
