@@ -1,11 +1,7 @@
-include:
-  - ostree.yaml
-
 # The bootc components.
 packages:
  - systemd
- # For now this will be shipped in rpm-ostree; TODO fix this by shipping a separate epackage
- # - bootc
+ - bootc
  # Required by bootc install today, though we'll likely switch bootc to use a Rust crate instead of sgdisk
  - gdisk xfsprogs e2fsprogs dosfstools
 
@@ -16,12 +12,6 @@ exclude-packages:
   - kernel-debug-core
 
 postprocess:
-  # rpm-ostree can be an alias for bootc, we want to enable that here.
-  - |
-    #!/usr/bin/env bash
-    if test ! -x /usr/bin/bootc && test -x /usr/bin/rpm-ostree; then
-      ln -sr /usr/bin/{rpm-ostree,bootc}
-    fi
   # XFS is our default filesystem
   - |
     #!/usr/bin/env bash
