@@ -1,4 +1,6 @@
 releasever: 39
+variables:
+  distro: "eln"
 
 repos:
   - eln-baseos

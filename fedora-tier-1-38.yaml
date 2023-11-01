@@ -1,4 +1,6 @@
 releasever: 38
+variables:
+  distro: "f38"
 
 repos:
   - fedora

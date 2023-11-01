@@ -49,8 +49,12 @@ remove-from-packages:
   # https://bugzilla.redhat.com/show_bug.cgi?id=2105177
   - [dbus-common, /usr/lib/sysusers.d/dbus.conf]
 
+conditional-include:
+  - if: distro != "stream9"
+    include: bootc.yaml
+
 include:
-  - bootc.yaml
+  - ostree.yaml
   - initramfs.yaml
 
 packages:
