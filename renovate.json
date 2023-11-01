@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>sagano-org/.github:renovate-config"
+    "local>centos/.github:renovate-config"
   ]
 }
