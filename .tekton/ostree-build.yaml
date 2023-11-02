@@ -4,19 +4,6 @@ metadata:
   name: ostree-build
 spec:
   finally:
-    - name: show-sbom
-      params:
-        - name: IMAGE_URL
-          value: $(tasks.build-container.results.IMAGE_URL)
-      taskRef:
-        params:
-          - name: name
-            value: show-sbom
-          - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-show-sbom:0.1@sha256:7db0af43dcebaeb33e34413148370e17078c30fd2fc78fb84c8941b444199f36
-          - name: kind
-            value: task
-        resolver: bundles
     - name: show-summary
       params:
         - name: pipelinerun-name
