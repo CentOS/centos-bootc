@@ -247,7 +247,7 @@ spec:
         - name: PLATFORM
           value: linux/amd64
         - name: BUILDER_IMAGE
-          value: quay.io/redhat-user-workloads/project-sagano-tenant/ostree-builder/ostree-builder-fedora-38:d124414a81d17f31b1d734236f55272a241703d7
+          value: quay.io/bcook/ostree-builder:latest
       runAfter:
         - clone-repository
       taskRef:
