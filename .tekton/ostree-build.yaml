@@ -240,7 +240,7 @@ spec:
       taskRef:
         params:
           - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
+            value: https://github.com/cgwalters/tekton-build-definitions/
           - name: revision
             value: rpm-ostree
           - name: pathInRepo
@@ -275,7 +275,7 @@ spec:
       taskRef:
         params:
           - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
+            value: https://github.com/cgwalters/tekton-build-definitions/
           - name: revision
             value: rpm-ostree
           - name: pathInRepo
@@ -310,7 +310,7 @@ spec:
       taskRef:
         params:
           - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
+            value: https://github.com/cgwalters/tekton-build-definitions/
           - name: revision
             value: rpm-ostree
           - name: pathInRepo
@@ -345,7 +345,7 @@ spec:
       taskRef:
         params:
           - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
+            value: https://github.com/cgwalters/tekton-build-definitions/
           - name: revision
             value: rpm-ostree
           - name: pathInRepo
