@@ -1,0 +1,35 @@
+name: builder
+
+on:
+  push:
+    paths:
+      - builder/**
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/builder
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install qemu dependency
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-user-static
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Login
+        run: buildah login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
+      - name: Build
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: latest
+          containerfiles: ./builder/Containerfile
+          archs: s390x, arm64, amd64, ppc64le
+          oci: true
+          context: builder
+      - name: Push
+        run: buildah push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
