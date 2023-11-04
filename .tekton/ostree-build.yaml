@@ -239,13 +239,13 @@ spec:
         - clone-repository
       taskRef:
         params:
-          - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
-          - name: revision
+          - name: name
             value: rpm-ostree
-          - name: pathInRepo
-            value: task/rpm-ostree/0.1/rpm-ostree.yaml
-        resolver: git
+          - name: bundle
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:b7dbe76640d10cd7b7ff39573ad7f5ca7523237449e38447c9bdca0ec3e1f187
+          - name: kind
+            value: task
+        resolver: bundles
       when:
         - input: $(tasks.init.results.build)
           operator: in
@@ -274,13 +274,13 @@ spec:
         - clone-repository-arm64
       taskRef:
         params:
-          - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
-          - name: revision
+          - name: name
             value: rpm-ostree
-          - name: pathInRepo
-            value: task/rpm-ostree/0.1/rpm-ostree.yaml
-        resolver: git
+          - name: bundle
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:b7dbe76640d10cd7b7ff39573ad7f5ca7523237449e38447c9bdca0ec3e1f187
+          - name: kind
+            value: task
+        resolver: bundles
       when:
         - input: $(tasks.init.results.build)
           operator: in
@@ -309,13 +309,13 @@ spec:
         - clone-repository-s390x
       taskRef:
         params:
-          - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
-          - name: revision
+          - name: name
             value: rpm-ostree
-          - name: pathInRepo
-            value: task/rpm-ostree/0.1/rpm-ostree.yaml
-        resolver: git
+          - name: bundle
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:b7dbe76640d10cd7b7ff39573ad7f5ca7523237449e38447c9bdca0ec3e1f187
+          - name: kind
+            value: task
+        resolver: bundles
       when:
         - input: $(tasks.init.results.build)
           operator: in
@@ -344,13 +344,13 @@ spec:
         - clone-repository-ppc64le
       taskRef:
         params:
-          - name: url
-            value: https://github.com/stuartwdouglas/build-definitions/
-          - name: revision
+          - name: name
             value: rpm-ostree
-          - name: pathInRepo
-            value: task/rpm-ostree/0.1/rpm-ostree.yaml
-        resolver: git
+          - name: bundle
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:b7dbe76640d10cd7b7ff39573ad7f5ca7523237449e38447c9bdca0ec3e1f187
+          - name: kind
+            value: task
+        resolver: bundles
       when:
         - input: $(tasks.init.results.build)
           operator: in
@@ -381,7 +381,7 @@ spec:
           - name: name
             value: build-image-manifest
           - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-build-image-manifest:0.1@sha256:3cf06bd844d8a099edc3b14b77f8b55a8869e3aa2a55f69eb1f446700aab7571
+            value: quay.io/redhat-appstudio-tekton-catalog/task-build-image-manifest:0.1@sha256:8e27a9376764122aba32c0a310876f154c6c9710e323f3330c7e5f6d1c234f25
           - name: kind
             value: task
         resolver: bundles
