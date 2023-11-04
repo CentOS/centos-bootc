@@ -1,8 +1,10 @@
 name: builder
 
 on:
+  workflow_dispatch:
   push:
     paths:
+      - .github/workflows/builder.yml
       - builder/**
 
 env:
