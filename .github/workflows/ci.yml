@@ -27,10 +27,6 @@ jobs:
           variant: "-rt"
         - os: fedora
           version: eln
-        - os: fedora
-          variant: ""
-        - os: fedora
-          variant: "-dev"
 
     steps:
       - name: Checkout repository
