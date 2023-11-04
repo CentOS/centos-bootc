@@ -1,5 +1,3 @@
-# Sagano
-
 # Goals
 
 This project's toplevel goal is to create base *bootable* container images
@@ -7,17 +5,15 @@ from Fedora ELN and CentOS Stream packages.
 
 ## Status
 
-This project was migrated from https://gitlab.com/centos/cloud/sagano
+This is an in-development project not intended for production use yet.
+
+This project was migrated from [a gitlab repo](https://gitlab.com/centos/cloud/sagano)
 and currently container images point to that repository.  Reworking
 the build system is in progress!
 
 ## Trying it out
 
 See [install.md](./install.md).
-
-## Status
-
-This is an in-development project not intended for production use yet.
 
 ## Differences from Fedora CoreOS
 
