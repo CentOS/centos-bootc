@@ -7,13 +7,13 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/builder
 
 jobs:
   build-image:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo IMAGE_NAME=$(echo ${{ github.repository_owner }}/builder | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       - name: Install qemu dependency
         run: |
           sudo apt-get update
@@ -32,4 +32,4 @@ jobs:
           oci: true
           context: builder
       - name: Push
-        run: buildah push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        run: buildah push --all ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
