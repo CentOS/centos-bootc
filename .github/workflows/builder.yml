@@ -9,29 +9,33 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  QUAY_ORG: centos-boot
 
 jobs:
   build-image:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo IMAGE_NAME=$(echo ${{ github.repository_owner }}/builder | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+      - run: echo IMAGE=${{ env.REGISTRY }}/$(echo ${{ github.repository_owner }}/builder | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       - name: Install qemu dependency
         run: |
           sudo apt-get update
           sudo apt-get install -y qemu-user-static
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Login
+      - name: Login to ghcr.io
         run: buildah login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
+      - name: Login to quay.io
+        run: buildah login --username ${{ secrets.QUAY_USER }} --password ${{ secrets.QUAY_PASSWORD }} quay.io
       - name: Build
         uses: redhat-actions/buildah-build@v2
         with:
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          image: ${{ env.IMAGE }}
           tags: latest
           containerfiles: ./builder/Containerfile
           archs: s390x, arm64, amd64, ppc64le
-          oci: true
           context: builder
-      - name: Push
-        run: buildah push --all ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Push to ghcr.io
+        run: buildah manifest push --all ${{ env.IMAGE }} docker://${{ env.IMAGE }}
+      - name: Push To quay.io
+        run: buildah manifest push --all ${{ env.IMAGE }} docker://quay.io/${{ env.QUAY_ORG }}/builder
