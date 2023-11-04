@@ -1,3 +1,0 @@
-include:
-  - fedora-tier-1-eln.yaml
-  - fedora-dev.yaml

@@ -1,3 +1,0 @@
-include:
-  - fedora-tier-0-38.yaml
-  - fedora-dev.yaml
