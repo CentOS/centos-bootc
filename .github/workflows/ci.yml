@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: registry.gitlab.com/centos/cloud/sagano-builder/centos:stream9
+      image: quay.io/centos-boot/builder:latest
       options: --privileged
 
     strategy:
