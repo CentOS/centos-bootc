@@ -191,34 +191,6 @@ spec:
           workspace: workspace-s390x
         - name: basic-auth
           workspace: git-auth
-    - name: clone-repository-ppc64le
-      params:
-        - name: url
-          value: $(params.git-url)
-        - name: revision
-          value: $(params.revision)
-      runAfter:
-        - init
-      taskRef:
-        kind: Task
-        params:
-          - name: name
-            value: git-clone
-          - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-git-clone:0.1@sha256:d9e1ab10d72953e7a85dab69b8b96f5b41580a6d4026f77b6a5ba6f3ed227cc3
-          - name: kind
-            value: task
-        resolver: bundles
-      when:
-        - input: $(tasks.init.results.build)
-          operator: in
-          values:
-            - "true"
-      workspaces:
-        - name: output
-          workspace: workspace-ppc64le
-        - name: basic-auth
-          workspace: git-auth
     - name: build-container-amd64
       params:
         - name: IMAGE
@@ -324,41 +296,6 @@ spec:
       workspaces:
         - name: source
           workspace: workspace-s390x
-    - name: build-container-ppc64le
-      params:
-        - name: IMAGE
-          value: $(params.output-image)-ppc64le
-        - name: IMAGE_FILE
-          value: $(params.image-file)
-        - name: CONTEXT
-          value: $(params.path-context)
-        - name: IMAGE_EXPIRES_AFTER
-          value: $(params.image-expires-after)
-        - name: COMMIT_SHA
-          value: $(tasks.clone-repository.results.commit)
-        - name: PLATFORM
-          value: linux/ppc64le
-        - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
-      runAfter:
-        - clone-repository-ppc64le
-      taskRef:
-        params:
-          - name: name
-            value: rpm-ostree
-          - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:b7dbe76640d10cd7b7ff39573ad7f5ca7523237449e38447c9bdca0ec3e1f187
-          - name: kind
-            value: task
-        resolver: bundles
-      when:
-        - input: $(tasks.init.results.build)
-          operator: in
-          values:
-            - "true"
-      workspaces:
-        - name: source
-          workspace: workspace-s390x
     - name: build-container
       params:
         - name: IMAGE
@@ -370,12 +307,10 @@ spec:
             - $(tasks.build-container-amd64.results.IMAGE_URL)@$(tasks.build-container-amd64.results.IMAGE_DIGEST)
             - $(tasks.build-container-arm64.results.IMAGE_URL)@$(tasks.build-container-arm64.results.IMAGE_DIGEST)
             - $(tasks.build-container-s390x.results.IMAGE_URL)@$(tasks.build-container-s390x.results.IMAGE_DIGEST)
-            - $(tasks.build-container-ppc64le.results.IMAGE_URL)@$(tasks.build-container-ppc64le.results.IMAGE_DIGEST)
       runAfter:
         - build-container-amd64
         - build-container-arm64
         - build-container-s390x
-        - build-container-ppc64le
       taskRef:
         params:
           - name: name
@@ -500,7 +435,6 @@ spec:
   workspaces:
     - name: workspace
     - name: workspace-arm64
-    - name: workspace-ppc64le
     - name: workspace-s390x
     - name: git-auth
       optional: true
