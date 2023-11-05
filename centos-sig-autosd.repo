@@ -1,0 +1,25 @@
+[autosd]
+name=AutoSD
+baseurl=https://autosd.sig.centos.org/AutoSD-9/nightly/repos/AutoSD/compose/AutoSD/$basearch/os/
+gpgcheck=0
+priority=50
+enabled=1
+countme=1
+skip_if_unavailable=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Automotive
+
+[autosd-debuginfo]
+name=AutoSD - Debug
+baseurl=https://autosd.sig.centos.org/AutoSD-9/nightly/repos/AutoSD/compose/AutoSD/$basearch/debug/
+gpgcheck=1
+priority=50
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Automotive
+
+[autosd-source]
+name=AutoSD - Source
+baseurl=https://autosd.sig.centos.org/AutoSD-9/nightly/repos/AutoSD/compose/AutoSD/source/tree/
+gpgcheck=1
+priority=50
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Automotive

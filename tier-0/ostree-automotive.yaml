@@ -1,0 +1,32 @@
+packages:
+ - ostree
+ - nss-altfiles
+ - greenboot
+ - greenboot-grub2
+ - greenboot-reboot
+ - greenboot-status
+ - greenboot-rpm-ostree-grub2
+
+# units section is uncompatible with machineid-compat.
+# Move this to a preset file in a postprocess script
+#units:
+#  - greenboot-grub2-set-counter.service
+#  - greenboot-grub2-set-success.service
+#  - greenboot-healthcheck.service
+#  - greenboot-rpm-ostree-grub2-check-fallback.service
+#  - greenboot-status.service
+#  - greenboot-task-runner.service
+
+postprocess:
+  # Set up default root config
+  - |
+    #!/usr/bin/env bash
+    mkdir -p /usr/lib/ostree
+    cat > /usr/lib/ostree/prepare-root.conf << EOF
+    [sysroot]
+    readonly = true
+    [etc]
+    
+    [composefs]
+    enabled=maybe
+    EOF

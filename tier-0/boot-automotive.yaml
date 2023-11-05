@@ -1,0 +1,12 @@
+packages:
+  - dracut-config-generic
+  - grub2-tools-minimal
+  - lz4
+
+# bootloader
+packages-aarch64:
+  - grub2-efi-aa64 efibootmgr shim
+packages-x86_64:
+  - grub2 grub2-efi-x64 efibootmgr shim
+  - microcode_ctl
+

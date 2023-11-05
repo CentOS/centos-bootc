@@ -1,0 +1,5 @@
+packages:
+ - kernel-automotive kernel-automotive-core kernel-automotive-modules kernel-automotive-modules-core
+
+exclude-packages:
+  - kernel-automotive-debug

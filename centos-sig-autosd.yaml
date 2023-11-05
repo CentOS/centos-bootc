@@ -1,0 +1,4 @@
+releasever: 9
+
+repos:
+  - autosd

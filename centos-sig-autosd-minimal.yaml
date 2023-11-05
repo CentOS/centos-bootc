@@ -1,0 +1,25 @@
+metadata:
+  name: autosd-minimal
+  summary: Automotive Stream Distribution minimal
+
+ref: autosd/${basearch}/minimal
+
+include:
+  - centos-sig-autosd.yaml
+  - tier-0/kernel-automotive.yaml
+  - tier-0/initramfs-automotive.yaml
+  - tier-0/boot-automotive.yaml
+  - tier-0/ostree-automotive.yaml
+  - tier-1/manifest-automotive.yaml
+
+packages:
+  - centos-release-autosd
+  - NetworkManager
+  - e2fsprogs
+  - efibootmgr
+  - glibc-langpack-en
+  - hostname
+  - passwd
+  - rootfiles
+  - selinux-policy-targeted
+  - systemd-udev
