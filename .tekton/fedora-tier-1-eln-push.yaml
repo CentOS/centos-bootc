@@ -14,7 +14,7 @@ metadata:
     appstudio.openshift.io/component: fedora-tier-1-eln
     pipelines.appstudio.openshift.io/type: build
   name: fedora-tier-1-eln-on-push
-  namespace: project-sagano-tenant
+  namespace: centos-boot-tenant
 spec:
   params:
   - name: dockerfile
@@ -22,7 +22,7 @@ spec:
   - name: git-url
     value: '{{repo_url}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/project-sagano-tenant/centos-boot/fedora-tier-1-eln:{{revision}}
+    value: quay.io/redhat-user-workloads/centos-boot-tenant/centos-boot/fedora-tier-1-eln:{{revision}}
   - name: path-context
     value: .
   - name: revision
