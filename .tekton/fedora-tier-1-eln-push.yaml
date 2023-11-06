@@ -2,28 +2,27 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   annotations:
-    build.appstudio.openshift.io/repo: https://github.com/CentOS/sagano?rev={{revision}}
+    build.appstudio.openshift.io/repo: https://github.com/CentOS/centos-boot?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
-    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
+    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
       == "main"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: sagano
-    appstudio.openshift.io/component: centos-tier-0-stream9
+    appstudio.openshift.io/application: centos-boot
+    appstudio.openshift.io/component: fedora-tier-1-eln
     pipelines.appstudio.openshift.io/type: build
-  name: centos-tier-0-stream9-on-pull-request
-  namespace: project-sagano-tenant
+  name: fedora-tier-1-eln-on-push
+  namespace: centos-boot-tenant
 spec:
   params:
     - name: image-file
-      value: centos-tier-0-stream9.yaml
+      value: fedora-tier-1-eln.yaml
     - name: git-url
       value: '{{repo_url}}'
     - name: output-image
-      value: quay.io/redhat-user-workloads/project-sagano-tenant/sagano/centos-tier-0-stream9:on-pr-{{revision}}
+      value: quay.io/redhat-user-workloads/centos-boot-tenant/centos-boot/fedora-tier-1-eln:on-pr-{{revision}}
     - name: path-context
       value: .
     - name: revision
