@@ -22,13 +22,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y qemu-user-static
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.1
       - name: Login to ghcr.io
         run: buildah login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
       - name: Login to quay.io
         run: buildah login --username ${{ secrets.QUAY_USER }} --password ${{ secrets.QUAY_PASSWORD }} quay.io
       - name: Build
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v2.12
         with:
           image: ${{ env.IMAGE }}
           tags: latest
