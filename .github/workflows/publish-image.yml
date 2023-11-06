@@ -34,7 +34,8 @@ jobs:
 
       - name: Build and Push
         run: |
-          echo "${{ env.QUAY_PASSWORD }}" | skopeo login -u "${{ env.QUAY_USER }}" --password-stdin ${{ env.REGISTRY }}
+          echo "${{ secrets.QUAY_PASSWORD }}" | skopeo login -u "${{ secrets.QUAY_USER }}" \
+          --password-stdin ${{ env.REGISTRY }}
           rpm-ostree compose image --initialize-mode if-not-exists \
           --format=registry ${{ matrix.os }}-${{ matrix.tier }}-${{ matrix.version }}.yaml \
           ${{ env.REGISTRY }}/${{ env.QUAY_ORG }}/${{ matrix.os }}-${{ matrix.tier}}:${{ matrix.version }}
