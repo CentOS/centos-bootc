@@ -27,6 +27,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
+      - name: Workaround git safe.directory
+        run: git config --global --add safe.directory '*'
+
+      - name: Set SOURCE_DATE_EPOCH
+        run: echo SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) >> $GITHUB_ENV
+
       - name: Build
         run: |
           rpm-ostree compose image --format=ociarchive \
