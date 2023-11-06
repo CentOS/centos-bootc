@@ -1,5 +1,0 @@
-# This image contains the baseline tools to build bootable base images.
-FROM quay.io/centos/centos:stream9@sha256:34f587a3228a2a924a114e5bd04450c119e9d803154f18e27eb97530c5ea13f5
-COPY coreos-continuous.repo /etc/yum.repos.d
-COPY . /src
-RUN /src/build.sh && cd / && rm /src -rf
