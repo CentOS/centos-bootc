@@ -1,0 +1,41 @@
+name: publish-image
+
+on:
+  push:
+    branches:
+    - main
+
+  workflow_dispatch:
+
+env:
+  REGISTRY: quay.io
+  QUAY_ORG: centos-boot
+
+jobs:
+
+  build-and-push-image:
+    runs-on: ubuntu-latest
+
+    container:
+      image: quay.io/centos-boot/builder:latest@sha256:fa814ae44e9c962f39020e0020111bb9d4cfdb52acc27dae2ca9d7fe301b61c3
+      options: --privileged
+
+    strategy:
+      matrix:
+        os: [fedora]
+        tier: [tier-1]
+        include:
+        - os: fedora
+          version: eln
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Build and Push
+        run: |
+          echo "${{ env.QUAY_PASSWORD }}" | skopeo login -u "${{ env.QUAY_USER }}" \
+          --password-stdin ${{ env.REGISTRY }}
+          rpm-ostree compose image --initialize-mode if-not-exists \
+          --format=registry ${{ matrix.os }}-${{ matrix.tier }}-${{ matrix.version }}.yaml \
+          ${{ env.REGISTRY }}/${{ env.QUAY_ORG }}/${{ matrix.os }}-${{ matrix.tier}}:${{ matrix.version }}
