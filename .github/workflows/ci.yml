@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-boot/builder:latest
+      image: quay.io/centos-boot/builder:latest@sha256:234e19e74e1eec123dfab1603d7e3b56f35080becfe635e9232750ca85a95841
       options: --privileged
 
     strategy:
