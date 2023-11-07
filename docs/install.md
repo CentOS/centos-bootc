@@ -1,5 +1,10 @@
-# Trying out Project CentOS boot development builds
+# Trying out development builds
 
+---
+nav_order: 2
+---
+
+<!--
 ## Booting directly from KVM guest image
 
 There's a provisional KVM guest image uploaded here:
@@ -11,6 +16,7 @@ and in general all the same techniques that work the Fedora Cloud Base or the
 RHEL KVM guest image.
 
 Once you've booted this, use e.g. `bootc update` to fetch updates.
+-->
 
 ## Rebasing from Fedora CoreOS
 
