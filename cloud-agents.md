@@ -1,4 +1,4 @@
-# Project Sagano tier-1 and cloud agents
+# Project CentOS boot tier-1 and cloud agents
 
 The tier-0 and tier-1 images today do not contain any special
 hypervisor-specific agents.  The following specifically are not included
