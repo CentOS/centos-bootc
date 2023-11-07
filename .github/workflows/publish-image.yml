@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-boot/builder:latest@sha256:fa814ae44e9c962f39020e0020111bb9d4cfdb52acc27dae2ca9d7fe301b61c3
+      image: quay.io/centos-boot/builder:latest@sha256:c05a652979f4d13b0d597a2ad32742069be718b71c7458b6f928290ab8d54a1a
       options: --privileged
 
     strategy:
@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Build and Push
         run: |
