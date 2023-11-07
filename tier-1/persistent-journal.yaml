@@ -7,7 +7,7 @@
 postprocess:
   - | #!/bin/bash
     mkdir -p /usr/lib/systemd/journald.conf.d/
-    cat >/usr/lib/systemd/journald.conf.d/10-sagano-persistent.conf << EOF
+    cat >/usr/lib/systemd/journald.conf.d/10-centos-boot-persistent.conf << EOF
     [Journal]
     Storage=persistent
     EOF

@@ -1,4 +1,4 @@
-# Trying out Project Sagano development builds
+# Trying out Project CentOS boot development builds
 
 ## Booting directly from KVM guest image
 
@@ -16,20 +16,16 @@ Once you've booted this, use e.g. `bootc update` to fetch updates.
 
 [Fedora CoreOS](https://docs.fedoraproject.org/en-US/fedora-coreos/) supports
 many different platforms, and can be used as a starting point to "rebase" to a
-custom derived image from Sagano.
+custom derived image from CentOS boot.
 
 ```shell
 systemctl mask --now zincati && rm -vf /run/ostree/staged-deployment-locked
 echo "# dummy change" >> "/etc/sudoers.d/coreos-sudo-group"
-rpm-ostree rebase ostree-unverified-registry:registry.gitlab.com/centos/cloud/sagano/fedora-boot-tier-1-dev:38
+rpm-ostree rebase ostree-unverified-registry:quay.io/centos-boot/fedora-tier-1:eln
 systemctl reboot
 ```
 
 See also [this pull request][1] for more information.
-
-## Installing via Anaconda
-
-For this path, see [this page in the sagano-examples](https://gitlab.com/CentOS/cloud/sagano-examples/-/tree/main/tier1-kickstart-unmodified).
 
 ## TODO: Use osbuild
 
@@ -51,7 +47,7 @@ configuration.
 
 ```shell
 dnf -y install podman skopeo
-podman run --rm --privileged --pid=host -v /:/target --security-opt label=type:unconfined_t registry.gitlab.com/centos/cloud/sagano-examples/autonomous-podman-hello:latest bootc install-to-filesystem --target-no-signature-verification --karg=console=ttyS0,115200n8 --replace=alongside /target
+podman run --rm --privileged --pid=host -v /:/target --security-opt label=type:unconfined_t quay.io/centos-boot/fedora-tier-1:eln bootc install-to-filesystem --target-no-signature-verification --karg=console=ttyS0,115200n8 --replace=alongside /target
 reboot
 ```
 
@@ -63,7 +59,6 @@ user state being preserved by the `rpm-ostree rebase`.
 What's much more interesting is to generate a custom derived container image,
 and target that instead.  For more information, see
 
-- <https://gitlab.com/CentOS/cloud/sagano-examples>
 - <https://github.com/coreos/layering-examples>
 - <https://github.com/openshift/rhcos-image-layering-examples>
 
