@@ -206,7 +206,7 @@ spec:
         - name: PLATFORM
           value: linux/amd64
         - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
+          value: quay.io/centos-boot/builder:1.0.0
       runAfter:
         - clone-repository
       taskRef:
@@ -241,7 +241,7 @@ spec:
         - name: PLATFORM
           value: linux/arm64
         - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
+          value: quay.io/centos-boot/builder:1.0.0
       runAfter:
         - clone-repository-arm64
       taskRef:
@@ -276,7 +276,7 @@ spec:
         - name: PLATFORM
           value: linux/s390x
         - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
+          value: quay.io/centos-boot/builder:1.0.0
       runAfter:
         - clone-repository-s390x
       taskRef:
