@@ -1,0 +1,110 @@
+text
+
+# Basic partitioning
+clearpart --all --initlabel --disklabel=gpt
+part prepboot  --size=4    --fstype=prepboot
+part biosboot  --size=1    --fstype=biosboot
+part /boot/efi --size=100  --fstype=efi
+part /boot     --size=1000  --fstype=ext4 --label=boot
+part / --grow --fstype xfs
+
+ostreecontainer --url quay.io/centos-boot/fedora-tier-1:eln	--no-signature-verification
+
+firewall --disabled
+services --enabled=sshd
+
+# Only inject a SSH key for root
+rootpw --iscrypted locked
+# Add your example SSH key here!
+#sshkey --username root "ssh-ed25519 <key> demo@example.com"
+reboot
+
+# ONLY SCROLL PAST HERE TO SEE THE TEMPORARY UGLY HACKS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Install via bootupd - TODO change anaconda to auto-detect this
+bootloader --location=none --disabled
+%post
+# Work around anaconda wanting a root password
+passwd -l root
+/usr/bin/bootupctl backend install --device /dev/vda /
+mkdir -p /boot/grub2
+# Work around https://github.com/coreos/bootupd/pull/536 not being merged yet
+base64 -d >/boot/grub2/grub.cfg << EOF
+IyBUaGlzIGZpbGUgaXMgY29waWVkIGZyb20gaHR0cHM6Ly9naXRodWIuY29tL2NvcmVvcy9jb3Jl
+b3MtYXNzZW1ibGVyL2Jsb2IvbWFpbi9zcmMvZ3J1Yi5jZmcKIyBDaGFuZ2VzOgojICAgLSBEcm9w
+cGVkIElnbml0aW9uIGdsdWUsIHRoYXQgY2FuIGJlIGluamVjdGVkIGludG8gcGxhdGZvcm0uY2Zn
+CiMgc2V0IHBhZ2VyPTEKIyBwZXRpdGJvb3QgZG9lc24ndCBzdXBwb3J0IC1lIGFuZCBkb2Vzbid0
+IHN1cHBvcnQgYW4gZW1wdHkgcGF0aCBwYXJ0CmlmIFsgLWQgKG1kL21kLWJvb3QpL2dydWIyIF07
+IHRoZW4KICAjIGZjY3QgY3VycmVudGx5IGNyZWF0ZXMgL2Jvb3QgUkFJRCB3aXRoIHN1cGVyYmxv
+Y2sgMS4wLCB3aGljaCBhbGxvd3MKICAjIGNvbXBvbmVudCBwYXJ0aXRpb25zIHRvIGJlIHJlYWQg
+ZGlyZWN0bHkgYXMgZmlsZXN5c3RlbXMuICBUaGlzIGlzCiAgIyBuZWNlc3NhcnkgYmVjYXVzZSB0
+cmFuc3Bvc2VmcyBkb2Vzbid0IHlldCByZXJ1biBncnViMi1pbnN0YWxsIG9uIEJJT1MsCiAgIyBz
+byBHUlVCIHN0aWxsIGV4cGVjdHMgL2Jvb3QgdG8gYmUgYSBwYXJ0aXRpb24gb24gdGhlIGZpcnN0
+IGRpc2suCiAgIwogICMgVGhlcmUgYXJlIHR3byBjb25zZXF1ZW5jZXM6CiAgIyAxLiBPbiBCSU9T
+IGFuZCBVRUZJLCB0aGUgc2VhcmNoIGNvbW1hbmQgbWlnaHQgcGljayBhbiBpbmRpdmlkdWFsIFJB
+SUQKICAjICAgIGNvbXBvbmVudCwgYnV0IHdlIHdhbnQgaXQgdG8gdXNlIHRoZSBmdWxsIFJBSUQg
+aW4gY2FzZSB0aGVyZSBhcmUgYmFkCiAgIyAgICBzZWN0b3JzIGV0Yy4gIFRoZSB1bmRvY3VtZW50
+ZWQgLS1oaW50IG9wdGlvbiBpcyBzdXBwb3NlZCB0byBzdXBwb3J0CiAgIyAgICB0aGlzIHNvcnQg
+b2Ygb3ZlcnJpZGUsIGJ1dCBpdCBkb2Vzbid0IHNlZW0gdG8gd29yaywgc28gd2Ugc2V0ICRib290
+CiAgIyAgICBkaXJlY3RseS4KICAjIDIuIE9uIEJJT1MsIHRoZSAibm9ybWFsIiBtb2R1bGUgaGFz
+IGFscmVhZHkgYmVlbiBsb2FkZWQgZnJvbSBhbgogICMgICAgaW5kaXZpZHVhbCBSQUlEIGNvbXBv
+bmVudCwgYW5kICRwcmVmaXggc3RpbGwgcG9pbnRzIHRoZXJlLiAgV2Ugd2FudAogICMgICAgZnV0
+dXJlIG1vZHVsZSBsb2FkcyB0byBjb21lIGZyb20gdGhlIFJBSUQsIHNvIHdlIHJlc2V0ICRwcmVm
+aXguCiAgIyAgICAoT24gVUVGSSwgdGhlIHN0dWIgZ3J1Yi5jZmcgaGFzIGFscmVhZHkgc2V0ICRw
+cmVmaXggcHJvcGVybHkuKQogIHNldCBib290PW1kL21kLWJvb3QKICBzZXQgcHJlZml4PSgkYm9v
+dCkvZ3J1YjIKZWxzZQogIGlmIFsgLWYgJHtjb25maWdfZGlyZWN0b3J5fS9ib290dXVpZC5jZmcg
+XTsgdGhlbgogICAgc291cmNlICR7Y29uZmlnX2RpcmVjdG9yeX0vYm9vdHV1aWQuY2ZnCiAgZmkK
+ICBpZiBbIC1uICIke0JPT1RfVVVJRH0iIF07IHRoZW4KICAgIHNlYXJjaCAtLWZzLXV1aWQgIiR7
+Qk9PVF9VVUlEfSIgLS1zZXQgYm9vdCAtLW5vLWZsb3BweQogIGVsc2UKICAgIHNlYXJjaCAtLWxh
+YmVsIGJvb3QgLS1zZXQgYm9vdCAtLW5vLWZsb3BweQogIGZpCmZpCnNldCByb290PSRib290Cgpp
+ZiBbIC1mICR7Y29uZmlnX2RpcmVjdG9yeX0vZ3J1YmVudiBdOyB0aGVuCiAgbG9hZF9lbnYgLWYg
+JHtjb25maWdfZGlyZWN0b3J5fS9ncnViZW52CmVsaWYgWyAtcyAkcHJlZml4L2dydWJlbnYgXTsg
+dGhlbgogIGxvYWRfZW52CmZpCgppZiBbIHgiJHtmZWF0dXJlX21lbnVlbnRyeV9pZH0iID0geHkg
+XTsgdGhlbgogIG1lbnVlbnRyeV9pZF9vcHRpb249Ii0taWQiCmVsc2UKICBtZW51ZW50cnlfaWRf
+b3B0aW9uPSIiCmZpCgpmdW5jdGlvbiBsb2FkX3ZpZGVvIHsKICBpZiBbIHgkZmVhdHVyZV9hbGxf
+dmlkZW9fbW9kdWxlID0geHkgXTsgdGhlbgogICAgaW5zbW9kIGFsbF92aWRlbwogIGVsc2UKICAg
+IGluc21vZCBlZmlfZ29wCiAgICBpbnNtb2QgZWZpX3VnYQogICAgaW5zbW9kIGllZWUxMjc1X2Zi
+CiAgICBpbnNtb2QgdmJlCiAgICBpbnNtb2QgdmdhCiAgICBpbnNtb2QgdmlkZW9fYm9jaHMKICAg
+IGluc21vZCB2aWRlb19jaXJydXMKICBmaQp9CgojIHRyYWNrZXI6IGh0dHBzOi8vZ2l0aHViLmNv
+bS9jb3Jlb3MvZmVkb3JhLWNvcmVvcy10cmFja2VyL2lzc3Vlcy84MDUKaWYgWyAtZiAkcHJlZml4
+L3BsYXRmb3JtLmNmZyBdOyB0aGVuCiAgc291cmNlICRwcmVmaXgvcGxhdGZvcm0uY2ZnCmZpCgpp
+ZiBbIHgkZmVhdHVyZV90aW1lb3V0X3N0eWxlID0geHkgXSA7IHRoZW4KICBzZXQgdGltZW91dF9z
+dHlsZT1tZW51CiAgc2V0IHRpbWVvdXQ9MQojIEZhbGxiYWNrIG5vcm1hbCB0aW1lb3V0IGNvZGUg
+aW4gY2FzZSB0aGUgdGltZW91dF9zdHlsZSBmZWF0dXJlIGlzCiMgdW5hdmFpbGFibGUuCmVsc2UK
+ICBzZXQgdGltZW91dD0xCmZpCgojIEltcG9ydCB1c2VyIGRlZmluZWQgY29uZmlndXJhdGlvbgoj
+IHRyYWNrZXI6IGh0dHBzOi8vZ2l0aHViLmNvbS9jb3Jlb3MvZmVkb3JhLWNvcmVvcy10cmFja2Vy
+L2lzc3Vlcy84MDUKaWYgWyAtZiAkcHJlZml4L3VzZXIuY2ZnIF07IHRoZW4KICBzb3VyY2UgJHBy
+ZWZpeC91c2VyLmNmZwpmaQoKYmxzY2ZnCgo=
+EOF
+%end
