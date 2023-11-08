@@ -6,7 +6,7 @@ metadata:
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
+    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch && "base-images/**".pathChanged()
       == "main"
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ metadata:
 spec:
   params:
     - name: image-file
-      value: fedora-tier-1-eln.yaml
+      value: base-images/fedora-tier-1-eln.yaml
     - name: git-url
       value: '{{repo_url}}'
     - name: output-image
