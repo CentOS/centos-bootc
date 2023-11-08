@@ -1,5 +1,9 @@
 # Project CentOS boot tier-1 and cloud agents
 
+---
+nav_order: 2
+---
+
 The tier-0 and tier-1 images today do not contain any special
 hypervisor-specific agents.  The following specifically are not included
 for example:
