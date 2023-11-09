@@ -214,7 +214,7 @@ spec:
           - name: name
             value: rpm-ostree
           - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:2c3104b14bbfb7f149ae9bd35570edade81ce9182d0ada956dc15dab4a3813fc
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:fc1aef73d1c0b1566d9732079da9a21ff91a99ce04fc76ae99104a84d2790cb6
           - name: kind
             value: task
         resolver: bundles
@@ -249,7 +249,7 @@ spec:
           - name: name
             value: rpm-ostree
           - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:2c3104b14bbfb7f149ae9bd35570edade81ce9182d0ada956dc15dab4a3813fc
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:fc1aef73d1c0b1566d9732079da9a21ff91a99ce04fc76ae99104a84d2790cb6
           - name: kind
             value: task
         resolver: bundles
@@ -284,7 +284,7 @@ spec:
           - name: name
             value: rpm-ostree
           - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:2c3104b14bbfb7f149ae9bd35570edade81ce9182d0ada956dc15dab4a3813fc
+            value: quay.io/redhat-appstudio-tekton-catalog/task-rpm-ostree:0.1@sha256:fc1aef73d1c0b1566d9732079da9a21ff91a99ce04fc76ae99104a84d2790cb6
           - name: kind
             value: task
         resolver: bundles
