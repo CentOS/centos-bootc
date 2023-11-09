@@ -23,7 +23,7 @@ include Ignition for example.
 
 ## Differences from RHEL CoreOS
 
-We sometimes say that RHEL CoreOS [has FCOS as an upstream][1] but this is only
+We sometimes say that RHEL CoreOS [has FCOS as an upstream](https://github.com/openshift/os/blob/master/docs/faq.md#q-what-is-coreos) but this is only
 kind of true; RHEL CoreOS includes a subset of FCOS content, and is lifecycled
 with OCP.
 
@@ -34,15 +34,6 @@ that can be used as *base images* for RHEL CoreOS; for more on this, see e.g.
 ## Differences from RHEL for Edge
 
 It is an explicit goal that CentOS boot also becomes a "base input" to RHEL for Edge.
-
-## What does CentOS boot means
-
-From [Wikipedia](https://en.wikipedia.org/wiki/Bamboo_Forest_(Kyoto,_Japan)):
-
-> Bamboo Forest, Arashiyama Bamboo Grove or CentOS boot Bamboo Forest, is a natural
-> forest of bamboo in Arashiyama, Kyoto, Japan
-
-[1]: https://github.com/openshift/os/blob/master/docs/faq.md#q-what-is-coreos
 
 ## Demonstration base images for Project CentOS boot
 
