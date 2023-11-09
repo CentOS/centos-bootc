@@ -1,8 +1,8 @@
-# Relationship with CoreOS
+---
+nav_order: 2
+---
 
----
-nav_order: 5
----
+# Relationship with CoreOS
 
 The CoreOS Container Linux project was very successful, spawning multiple projects
 and derivatives that continue to see widespread use today.
