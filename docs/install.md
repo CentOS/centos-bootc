@@ -1,8 +1,8 @@
-# Trying out development builds
-
 ---
 nav_order: 2
 ---
+
+# Trying out development builds
 
 ## Operating system state (users, ssh keys)
 
