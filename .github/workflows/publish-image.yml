@@ -3,7 +3,9 @@ name: publish-image
 on:
   push:
     branches:
-    - main
+      - main
+    paths-ignore:
+      - 'docs/**'
 
   workflow_dispatch:
 
