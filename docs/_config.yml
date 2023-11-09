@@ -1,5 +1,5 @@
-title: containers/bootc
-description: bootc documentation
+title: centos/centos-boot
+description: centos-boot documentation
 baseurl: "/centos-boot"
 url: "https://centos.github.io"
 # Comment above and use below for local development
@@ -32,8 +32,8 @@ color_scheme: coreos
 
 # Aux links for the upper right navigation
 aux_links:
-  "bootc on GitHub":
-    - "https://github.com/containers/bootc"
+  "centos-boot on GitHub":
+    - "https://github.com/centos/centos-boot"
 
 footer_content: "Copyright &copy; <a href=\"https://www.redhat.com\">Red Hat, Inc.</a> and <a href=\"https://github.com/containers\">others</a>."
 
@@ -44,7 +44,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p"
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/containers/bootc"
+gh_edit_repository: "https://github.com/centos/centos-boot"
 gh_edit_branch: "main"
 gh_edit_source: docs
 gh_edit_view_mode: "tree"
