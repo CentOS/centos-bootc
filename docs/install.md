@@ -4,6 +4,12 @@ nav_order: 2
 
 # Trying out development builds
 
+## Using fedora-boot-cloud via KVM
+
+This repository defines a cloud-agnostic base image.  However, many
+people who just want to "try things out" will find it easiest to start
+with [the cloud image](https://github.com/CentOS/centos-boot-layered/tree/main/fedora-boot-cloud).
+
 ## Operating system state (users, ssh keys)
 
 It's absolutely crucial to understand that the container image *is* the
@@ -72,11 +78,7 @@ There's a provisional KVM guest image uploaded here:
 
 <https://fedorapeople.org/~walters/cloud-init-base-eln-20231029.qcow2.zst>
 
-You can run it using e.g. [virt-install](https://github.com/virt-manager/virt-manager/blob/main/man/virt-install.rst#--cloud-init)
-and in general all the same techniques that work the Fedora Cloud Base or the
-RHEL KVM guest image.
 
-Once you've booted this, use e.g. `bootc update` to fetch updates.
 -->
 
 ## Rebasing from Fedora CoreOS
