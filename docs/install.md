@@ -77,8 +77,6 @@ reboot
 There's a provisional KVM guest image uploaded here:
 
 <https://fedorapeople.org/~walters/cloud-init-base-eln-20231029.qcow2.zst>
-
-
 -->
 
 ## Rebasing from Fedora CoreOS
