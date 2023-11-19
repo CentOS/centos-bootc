@@ -17,11 +17,13 @@ jobs:
 
     strategy:
       matrix:
-        os: [fedora]
+        os: [fedora, centos]
         tier: [tier-1]
         include:
         - os: fedora
           version: eln
+        - os: centos
+          version: stream9
 
     steps:
       - name: Checkout repository
