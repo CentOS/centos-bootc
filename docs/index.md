@@ -10,10 +10,32 @@ This is an in-development project not intended for production use yet.
 ## Container images
 
 The primary output of this project is container images.  The current
-main development target is [Fedora ELN](https://docs.fedoraproject.org/en-US/eln/)
-and there is one image built:
+main development targets are [Fedora ELN](https://docs.fedoraproject.org/en-US/eln/)
+and CentOS Stream 9.
+
+### Distribution locked images
+
+These images are intended to exactly match the content of the underlying distribution.
 
 - `quay.io/centos-boot/fedora-tier-1:eln`
+- `quay.io/centos-boot/centos-tier-1:stream9`
+
+### Layered images
+
+There are also layered images; for more information on these, see
+[the centos-boot-layered repository](https://github.com/CentOS/centos-boot-layered).
+
+### Development images
+
+Some components of this project move quickly, and it's often useful to see things
+as they appear in git `main` instead of waiting for package releases.
+
+The following images track git main of selected components:
+
+- `quay.io/centos-boot/fedora-tier-1-dev:eln`
+- `quay.io/centos-boot/centos-tier-1-dev:stream9`
+
+For more information, see [the dev repository](https://github.com/centos/centos-boot-dev).
 
 ## Trying it out
 
