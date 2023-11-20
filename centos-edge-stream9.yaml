@@ -1,0 +1,127 @@
+include:
+  - centos-tier-1-stream9.yaml
+
+# Configuration for the initramfs
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    mkdir -p /usr/lib/systemd/system-preset
+    cat > /usr/lib/systemd/system-preset/80-iot.preset << 'EOF'
+    # greenboot generic health checking framework
+    enable greenboot-grub2-set-counter.service
+    enable greenboot-grub2-set-success.service
+    enable greenboot-healthcheck.service
+    enable greenboot-rpm-ostree-grub2-check-fallback.service
+    enable greenboot-status.service
+    enable greenboot-task-runner.service
+    enable redboot-auto-reboot.service
+    enable redboot-task-runner.service
+    # PARSEC services
+    enable parsec.service
+    enable dbus-parsec.service
+    # zezere_ignition provides first-boot provisioning and configuration
+    enable zezere_ignition.timer
+    enable ignition-firstboot-complete.service
+    enable coreos-ignition-write-issues.service
+    enable fdo-client-linuxapp.service
+    enable NetworkManager.service
+    enable firewalld.service
+    EOF
+    mkdir -p /usr/lib/dracut/dracut.conf.d
+    cat > /usr/lib/dracut/dracut.conf.d/01-edge-base.conf << 'EOF'
+    dracutmodules+=" systemd-ask-password ignition ignition-edge network-manager network url-lib clevis clevis-pin-null crypt lvm fido2 udev-rules fs-lib uefi-lib "
+    EOF
+
+packages:
+  - redhat-release
+  - fdo-owner-cli
+  - ignition
+  - ignition-edge
+  - ssh-key-dir
+  - grub2
+  - grub2-efi-x64
+  - efibootmgr
+  - shim-x64
+  - microcode_ctl
+  - iwl1000-firmware
+  - iwl100-firmware
+  - iwl105-firmware
+  - iwl135-firmware
+  - iwl2000-firmware
+  - iwl2030-firmware
+  - iwl3160-firmware
+  - iwl5000-firmware
+  - iwl5150-firmware
+  - iwl6050-firmware
+  - iwl7260-firmware
+  - glibc
+  - rpm
+  - rpm-ostree
+  - glibc-minimal-langpack
+  - nss-altfiles
+  - dracut-config-generic
+  - dracut-network
+  - basesystem
+  - bash
+  - platform-python
+  - shadow-utils
+  - chrony
+  - setup
+  - shadow-utils
+  - sudo
+  - systemd
+  - coreutils
+  - util-linux
+  - curl
+  - vim-minimal
+  - polkit
+  - lvm2
+  - cryptsetup
+  - pinentry
+  - e2fsprogs
+  - dosfstools
+  - keyutils
+  - gnupg2
+  - attr
+  - xz
+  - gzip
+  - firewalld
+  - iptables
+  - NetworkManager
+  - NetworkManager-wifi
+  - NetworkManager-wwan
+  - wpa_supplicant
+  - dnsmasq
+  - traceroute
+  - hostname
+  - iproute
+  - iputils
+  - procps-ng
+  - #rootfiles
+  - passwd
+  - policycoreutils
+  - policycoreutils-python-utils
+  - setools-console
+  - less
+  - tar
+  - rsync
+  - usbguard
+  - bash-completion
+  - tmux
+  - ima-evm-utils
+  - audit
+  - podman
+  - containernetworking-plugins
+  - container-selinux
+  - skopeo
+  - criu
+  - slirp4netns
+  - fuse-overlayfs
+  - clevis
+  - clevis-dracut
+  - clevis-luks
+  - greenboot
+  - greenboot-default-health-checks
+  - fdo-client
+
+cliwrap: true
