@@ -1,4 +1,4 @@
-# centos-boot
+# centos-bootc
 
 Create and maintain base *bootable* container images from Fedora ELN and
 CentOS Stream packages.
@@ -18,4 +18,4 @@ for base operating system updates.
 
 ## More information
 
-See the [project documentation](https://centos.github.io/centos-boot/).
+See the [project documentation](https://centos.github.io/centos-bootc/).

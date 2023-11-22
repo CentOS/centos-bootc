@@ -4,11 +4,11 @@ nav_order: 2
 
 # Trying out development builds
 
-## Using fedora-boot-cloud via KVM
+## Using fedora-bootc-cloud via KVM
 
 This repository defines a cloud-agnostic base image.  However, many
 people who just want to "try things out" will find it easiest to start
-with [the cloud image](https://github.com/CentOS/centos-boot-layered/tree/main/fedora-boot-cloud).
+with [the cloud image](https://github.com/CentOS/centos-bootc-layered/tree/main/fedora-bootc-cloud).
 
 ## Operating system state (users, ssh keys)
 
@@ -18,7 +18,7 @@ operating system content. Notably the default `tier-1` image
 recommended mechanism for provisioning user accountson its own.
 
 Commonly then you will want to build your own container image derived from e.g.
-`quay.io/centos-boot/fedora-tier-1:eln` that adds a login mechanism. For
+`quay.io/centos-bootc/fedora-bootc:eln` that adds a login mechanism. For
 example, you could
 [add cloud-init](https://gitlab.com/CentOS/cloud/sagano-examples/-/blob/main/cloud-init-base/Containerfile).
 
@@ -88,7 +88,7 @@ custom derived image from CentOS boot.
 ```shell
 systemctl mask --now zincati && rm -vf /run/ostree/staged-deployment-locked
 echo "# dummy change" >> "/etc/sudoers.d/coreos-sudo-group"
-rpm-ostree rebase ostree-unverified-registry:quay.io/centos-boot/fedora-tier-1:eln
+rpm-ostree rebase ostree-unverified-registry:quay.io/centos-bootc/fedora-bootc:eln
 systemctl reboot
 ```
 

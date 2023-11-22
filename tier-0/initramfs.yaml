@@ -11,6 +11,6 @@ postprocess:
     # We want this for systemd-cryptsetup tpm2 locking
     dracutmodules+=" tpm2-tss "
     EOF
-    cat > /usr/lib/dracut/dracut.conf.d/01-centos-boot-base.conf << 'EOF'
+    cat > /usr/lib/dracut/dracut.conf.d/01-centos-bootc-base.conf << 'EOF'
     dracutmodules+=" kernel-modules dracut-systemd systemd-initrd base "
     EOF

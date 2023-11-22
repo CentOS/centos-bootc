@@ -35,11 +35,13 @@ spec:
       name: output-image
       type: string
     - default: .
-      description: Path to the source code of an application's component from where
+      description:
+        Path to the source code of an application's component from where
         to build image.
       name: path-context
       type: string
-    - description: Path to the image file inside the context specified by parameter
+    - description:
+        Path to the image file inside the context specified by parameter
         path-context
       name: image-file
       type: string
@@ -68,7 +70,8 @@ spec:
       name: java
       type: string
     - default: ""
-      description: Image tag expiration time, time values could be something like
+      description:
+        Image tag expiration time, time values could be something like
         1h, 2d, 3w for hours, days, and weeks, respectively.
       name: image-expires-after
   results:
@@ -206,7 +209,7 @@ spec:
         - name: PLATFORM
           value: linux/amd64
         - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
+          value: quay.io/centos-bootc/builder:latest
       runAfter:
         - clone-repository
       taskRef:
@@ -241,7 +244,7 @@ spec:
         - name: PLATFORM
           value: linux/arm64
         - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
+          value: quay.io/centos-bootc/builder:latest
       runAfter:
         - clone-repository-arm64
       taskRef:
@@ -276,7 +279,7 @@ spec:
         - name: PLATFORM
           value: linux/s390x
         - name: BUILDER_IMAGE
-          value: quay.io/centos-boot/builder:latest
+          value: quay.io/centos-bootc/builder:latest
       runAfter:
         - clone-repository-s390x
       taskRef:

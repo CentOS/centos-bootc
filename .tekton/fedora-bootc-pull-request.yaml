@@ -3,11 +3,12 @@ kind: PipelineRun
 metadata:
   annotations:
     build.appstudio.openshift.io/repo: https://github.com/CentOS/centos-bootc?rev={{revision}}
-    build.appstudio.redhat.com/commit_sha: '{{revision}}'
-    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
-    build.appstudio.redhat.com/target_branch: '{{target_branch}}'
+    build.appstudio.redhat.com/commit_sha: "{{revision}}"
+    build.appstudio.redhat.com/pull_request_number: "{{pull_request_number}}"
+    build.appstudio.redhat.com/target_branch: "{{target_branch}}"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
+    pipelinesascode.tekton.dev/on-cel-expression:
+      event == "pull_request" && target_branch
       == "main"
   creationTimestamp: null
   labels:
@@ -21,13 +22,13 @@ spec:
     - name: image-file
       value: fedora-bootc.yaml
     - name: git-url
-      value: '{{repo_url}}'
+      value: "{{repo_url}}"
     - name: output-image
       value: quay.io/redhat-user-workloads/centos-bootc-tenant/centos-bootc/fedora-bootc:on-pr-{{revision}}
     - name: path-context
       value: .
     - name: revision
-      value: '{{revision}}'
+      value: "{{revision}}"
   pipelineRef:
     name: ostree-build
   workspaces:
@@ -77,5 +78,5 @@ spec:
         status: {}
     - name: git-auth
       secret:
-        secretName: '{{ git_auth_secret }}'
+        secretName: "{{ git_auth_secret }}"
 status: {}

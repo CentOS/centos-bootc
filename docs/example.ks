@@ -8,8 +8,8 @@ part /boot/efi --size=100  --fstype=efi
 part /boot     --size=1000  --fstype=ext4 --label=boot
 part / --grow --fstype xfs
 
-ostreecontainer --url quay.io/centos-boot/fedora-tier-1:eln	--no-signature-verification
-# Or: quay.io/centos-boot/centos-tier-1-dev:stream9
+ostreecontainer --url quay.io/centos-bootc/fedora-bootc:eln	--no-signature-verification
+# Or: quay.io/centos-bootc/centos-bootc-dev:stream9
 
 firewall --disabled
 services --enabled=sshd
