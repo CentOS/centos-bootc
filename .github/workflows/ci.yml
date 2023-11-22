@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'docs/**'
+      - "docs/**"
 
 jobs:
   build-image:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-boot/builder:latest@sha256:c57f2d2e9672baaddf501ee91c799903517c4b6ee38fd2dbd6e98171fd1c180c
+      image: quay.io/centos-boot/builder:latest
       options: --privileged
 
     strategy:
@@ -20,10 +20,8 @@ jobs:
         os: [fedora, centos]
         tier: [tier-1]
         include:
-        - os: fedora
-          version: eln
-        - os: centos
-          version: stream9
+          - os: fedora
+          - os: centos
 
     steps:
       - name: Checkout repository
@@ -38,5 +36,4 @@ jobs:
       - name: Build
         run: |
           rpm-ostree compose image --format=ociarchive \
-          --initialize ${{ matrix.os }}-${{ matrix.tier }}${{ matrix.variant }}-${{ matrix.version }}.yaml \
-          dest.oci-archive
+          --initialize ${{ matrix.os }}-bootc.yaml dest.oci-archive

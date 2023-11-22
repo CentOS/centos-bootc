@@ -5,32 +5,30 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'docs/**'
+      - "docs/**"
 
   workflow_dispatch:
 
 env:
   REGISTRY: quay.io
-  QUAY_ORG: centos-boot
+  QUAY_ORG: centos-bootc
 
 jobs:
-
   build-and-push-image:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-boot/builder:latest@sha256:c57f2d2e9672baaddf501ee91c799903517c4b6ee38fd2dbd6e98171fd1c180c
+      image: quay.io/centos-boot/builder:latest
       options: --privileged
 
     strategy:
       matrix:
         os: [fedora, centos]
-        tier: [tier-1]
         include:
-        - os: fedora
-          version: eln
-        - os: centos
-          version: stream9
+          - os: fedora
+            version: eln
+          - os: centos
+            version: stream9
 
     steps:
       - name: Checkout repository
@@ -48,5 +46,5 @@ jobs:
           echo "${{ secrets.QUAY_PASSWORD }}" | skopeo login -u "${{ secrets.QUAY_USER }}" \
           --password-stdin ${{ env.REGISTRY }}
           rpm-ostree compose image --initialize-mode if-not-exists \
-          --format=registry ${{ matrix.os }}-${{ matrix.tier }}-${{ matrix.version }}.yaml \
-          ${{ env.REGISTRY }}/${{ env.QUAY_ORG }}/${{ matrix.os }}-${{ matrix.tier}}:${{ matrix.version }}
+          --format=registry ${{ matrix.os }}-bootc.yaml \
+          ${{ env.REGISTRY }}/${{ env.QUAY_ORG }}/${{ matrix.os }}-bootc:${{ matrix.version }}
