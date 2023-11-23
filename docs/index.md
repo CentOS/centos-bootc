@@ -17,13 +17,13 @@ and CentOS Stream 9.
 
 These images are intended to exactly match the content of the underlying distribution.
 
-- `quay.io/centos-boot/fedora-tier-1:eln`
-- `quay.io/centos-boot/centos-tier-1:stream9`
+- `quay.io/centos-bootc/fedora-bootc:eln`
+- `quay.io/centos-bootc/centos-bootc:stream9`
 
 ### Layered images
 
 There are also layered images; for more information on these, see
-[the centos-boot-layered repository](https://github.com/CentOS/centos-boot-layered).
+[the centos-bootc-layered repository](https://github.com/CentOS/centos-bootc-layered).
 
 ### Development images
 
@@ -32,10 +32,10 @@ as they appear in git `main` instead of waiting for package releases.
 
 The following images track git main of selected components:
 
-- `quay.io/centos-boot/fedora-tier-1-dev:eln`
-- `quay.io/centos-boot/centos-tier-1-dev:stream9`
+- `quay.io/centos-bootc/fedora-bootc-dev:eln`
+- `quay.io/centos-bootc/centos-bootc-dev:stream9`
 
-For more information, see [the dev repository](https://github.com/centos/centos-boot-dev).
+For more information, see [the dev repository](https://github.com/centos/centos-bootc-dev).
 
 ## Trying it out
 

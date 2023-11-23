@@ -1,6 +1,6 @@
-title: centos/centos-boot
-description: centos-boot documentation
-baseurl: "/centos-boot"
+title: centos/centos-bootc
+description: centos-bootc documentation
+baseurl: "/centos-bootc"
 url: "https://centos.github.io"
 # Comment above and use below for local development
 # url: "http://localhost:4000"
@@ -32,10 +32,10 @@ color_scheme: coreos
 
 # Aux links for the upper right navigation
 aux_links:
-  "centos-boot on GitHub":
-    - "https://github.com/centos/centos-boot"
+  "centos-bootc on GitHub":
+    - "https://github.com/centos/centos-bootc"
 
-footer_content: "Copyright &copy; <a href=\"https://www.redhat.com\">Red Hat, Inc.</a> and <a href=\"https://github.com/containers\">others</a>."
+footer_content: 'Copyright &copy; <a href="https://www.redhat.com">Red Hat, Inc.</a> and <a href="https://github.com/containers">others</a>.'
 
 # Footer last edited timestamp
 last_edit_timestamp: true
@@ -44,7 +44,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p"
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/centos/centos-boot"
+gh_edit_repository: "https://github.com/centos/centos-bootc"
 gh_edit_branch: "main"
 gh_edit_source: docs
 gh_edit_view_mode: "tree"

@@ -6,6 +6,8 @@ on: # yamllint disable-line rule:truthy
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   pre_commit:
     runs-on: ubuntu-latest

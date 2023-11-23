@@ -7,21 +7,24 @@ on:
     paths-ignore:
       - "docs/**"
 
+  workflow_dispatch:
+
 jobs:
   build-image:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-boot/builder:latest
+      image: quay.io/centos-bootc/builder:latest
       options: --privileged
 
     strategy:
       matrix:
         os: [fedora, centos]
-        tier: [tier-1]
         include:
           - os: fedora
+            version: eln
           - os: centos
+            version: stream9
 
     steps:
       - name: Checkout repository
