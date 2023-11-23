@@ -17,6 +17,7 @@ on:
 
 env:
   REGISTRY: quay.io
+  QUAY_ORG: centos-bootc
 
 jobs:
   build-and-push-image:
