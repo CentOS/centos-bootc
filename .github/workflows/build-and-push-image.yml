@@ -1,6 +1,12 @@
-name: publish-image
+name: Build and Push Image
 
 on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "docs/**"
+
   push:
     branches:
       - main
@@ -9,16 +15,12 @@ on:
 
   workflow_dispatch:
 
-env:
-  REGISTRY: quay.io
-  QUAY_ORG: centos-bootc
-
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-boot/builder:latest
+      image: quay.io/centos-bootc/builder:latest
       options: --privileged
 
     strategy:
@@ -34,17 +36,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      # The --privileged bits seem to trip this up
-      - name: Ensure git safe directory
+      - name: Workaround git safe.directory
         run: git config --global --add safe.directory '*'
 
       - name: Set SOURCE_DATE_EPOCH
         run: echo SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) >> $GITHUB_ENV
 
-      - name: Build and Push
+      - name: Login to quay.io
         run: |
           echo "${{ secrets.QUAY_PASSWORD }}" | skopeo login -u "${{ secrets.QUAY_USER }}" \
           --password-stdin ${{ env.REGISTRY }}
+        if: ${{ github.event_name == 'push' }}
+
+      - name: Build
+        run: |
+          rpm-ostree compose image --format=ociarchive \
+          --initialize ${{ matrix.os }}-bootc.yaml dest.oci-archive
+        if: ${{ github.event_name == 'pull_request' }}
+
+      - name: Build and Push
+        run: |
           rpm-ostree compose image --initialize-mode if-not-exists \
           --format=registry ${{ matrix.os }}-bootc.yaml \
           ${{ env.REGISTRY }}/${{ env.QUAY_ORG }}/${{ matrix.os }}-bootc:${{ matrix.version }}
+        if: ${{ github.event_name == 'push' }}
