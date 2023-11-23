@@ -2,27 +2,28 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   annotations:
-    build.appstudio.openshift.io/repo: https://github.com/CentOS/centos-boot?rev={{revision}}
+    build.appstudio.openshift.io/repo: https://github.com/CentOS/centos-bootc?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
+    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
+    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
       == "main"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: centos-boot
-    appstudio.openshift.io/component: fedora-tier-1-eln
+    appstudio.openshift.io/application: centos-bootc
+    appstudio.openshift.io/component: fedora-bootc
     pipelines.appstudio.openshift.io/type: build
-  name: fedora-tier-1-eln-on-push
-  namespace: centos-boot-tenant
+  name: fedora-bootc-on-pull-request
+  namespace: centos-bootc-tenant
 spec:
   params:
     - name: image-file
-      value: fedora-tier-1-eln.yaml
+      value: fedora-bootc.yaml
     - name: git-url
       value: '{{repo_url}}'
     - name: output-image
-      value: quay.io/redhat-user-workloads/centos-boot-tenant/centos-boot/fedora-tier-1-eln:on-pr-{{revision}}
+      value: quay.io/redhat-user-workloads/centos-bootc-tenant/centos-bootc/fedora-bootc:on-pr-{{revision}}
     - name: path-context
       value: .
     - name: revision
