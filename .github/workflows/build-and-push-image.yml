@@ -15,6 +15,9 @@ on:
 
   workflow_dispatch:
 
+env:
+  REGISTRY: quay.io
+
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
