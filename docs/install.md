@@ -4,28 +4,15 @@ nav_order: 2
 
 # Trying out development builds
 
+## No default user accounts
+
+The default images produced do *not* include any default passwords or SSH keys.
+There is a `root` user present, but its password is locked.
+
 ## Using fedora-bootc-cloud via KVM
 
-This repository defines a cloud-agnostic base image.  However, many
-people who just want to "try things out" will find it easiest to start
+Many people who just want to "try things out" will find it easiest to start
 with [the cloud image](https://github.com/CentOS/centos-bootc-layered/tree/main/fedora-bootc-cloud).
-
-## Operating system state (users, ssh keys)
-
-It's absolutely crucial to understand that the container image *is* the
-operating system content. Notably the default `tier-1` image
-[does not include cloud-init](cloud-agents.md) or Ignition or any default
-recommended mechanism for provisioning user accountson its own.
-
-Commonly then you will want to build your own container image derived from e.g.
-`quay.io/centos-bootc/fedora-bootc:eln` that adds a login mechanism. For
-example, you could
-[add cloud-init](https://gitlab.com/CentOS/cloud/sagano-examples/-/blob/main/cloud-init-base/Containerfile).
-
-However, it's also possible to embed SSH login configuration in the image, or
-configure any login mechanism you desire in general! For example, you could set
-up a VPN configuration in your operating system and ensure logins are only
-possible over the VPN, etc.
 
 ## Installation using Anaconda
 
