@@ -45,31 +45,6 @@ For more information, see [the dev repository](https://github.com/centos/centos-
 
 See [install.md](./install.md).
 
-## Differences from Fedora CoreOS
-
-Fedora CoreOS today is not small; there are multiple reasons for this, but
-primarily because it was created in a pre-bootable-container time.  Not everyone
-wants e.g. moby-engine.
-
-But going beyond size, the images produced by this project will focus
-on a container-native flow.  We will ship a (container) image that does not
-include Ignition for example.
-
-## Differences from RHEL CoreOS
-
-We sometimes say that RHEL CoreOS
-[has FCOS as an upstream](https://github.com/openshift/os/blob/master/docs/faq.md#q-what-is-coreos)
-but this is only kind of true; RHEL CoreOS includes a subset of FCOS content,
-and is lifecycled with OCP.
-
-An explicit goal of this project is to produce bootable container images
-that can be used as *base images* for RHEL CoreOS; for more on this, see e.g.
-<https://github.com/openshift/os/issues/799>
-
-## Differences from RHEL for Edge
-
-It is an explicit goal that CentOS boot also becomes a "base input" to RHEL for Edge.
-
 ## Understanding "tiers"
 
 There is a "tier-0" image, but it is not yet being automatically built.  The "tier-0"
