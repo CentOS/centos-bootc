@@ -1,3 +1,7 @@
+---
+nav_order: 1
+---
+
 # Goals
 
 This project's toplevel goal is to maintain default definitions for
