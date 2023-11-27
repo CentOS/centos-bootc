@@ -19,14 +19,3 @@ rootpw --iscrypted locked
 # Add your example SSH key here!
 #sshkey --username root "ssh-ed25519 <key> demo@example.com"
 reboot
-
-# Workarounds until https://github.com/rhinstaller/anaconda/pull/5298/ lands
-bootloader --location=none --disabled
-%post --erroronfail
-set -euo pipefail
-# Work around anaconda wanting a root password
-passwd -l root
-rootdevice=$(findmnt -nv -o SOURCE /)
-device=$(lsblk -n -o PKNAME ${rootdevice})
-/usr/bin/bootupctl backend install --auto --with-static-configs --device /dev/${device} /
-%end
