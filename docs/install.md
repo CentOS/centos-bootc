@@ -35,6 +35,14 @@ See [example.ks](example.ks) for an example Kickstart file. The
 [virt-install --initrd-inject](https://github.com/virt-manager/virt-manager/blob/main/man/virt-install.rst#--initrd-inject)
 helps inject kickstart for installation to virtual machines.
 
+## Use osbuild-deploy-container
+
+The in-development [osbuild-deploy-container tool](https://github.com/osbuild/osbuild-deploy-container)
+supports generating disk images, including injecting user accounts.
+
+There's also an [osbuildbootc](https://github.com/cgwalters/osbuildbootc) tool that
+will be merged with the above.
+
 ## Using `bootc install-to-filesystem --replace=alongside` with a cloud image
 
 A toplevel goal of this project is that the "source of truth" for Linux
@@ -78,7 +86,3 @@ echo "# dummy change" >> "/etc/sudoers.d/coreos-sudo-group"
 rpm-ostree rebase ostree-unverified-registry:quay.io/centos-bootc/fedora-bootc:eln
 systemctl reboot
 ```
-
-## TODO: Use osbuild
-
-Document the ongoing work to materialize a disk image from a container.
