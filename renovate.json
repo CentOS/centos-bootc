@@ -2,5 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>centos/.github:renovate-config"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["quay.io/centos-bootc/builder"],
+      "pinDigests": false
+    }
   ]
 }
