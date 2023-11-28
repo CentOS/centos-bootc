@@ -9,10 +9,10 @@ nav_order: 2
 The default images produced do *not* include any default passwords or SSH keys.
 There is a `root` user present, but its password is locked.
 
-## Using fedora-bootc-cloud via KVM
+## Using the "generic cloud" image
 
 Many people who just want to "try things out" will find it easiest to start
-with [the cloud image](https://github.com/CentOS/centos-bootc-layered/tree/main/fedora-bootc-cloud).
+with [the cloud image](https://github.com/CentOS/centos-bootc-layered/tree/main/cloud).
 
 ## Installation using Anaconda
 
