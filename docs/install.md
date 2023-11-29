@@ -78,11 +78,13 @@ There's a provisional KVM guest image uploaded here:
 
 [Fedora CoreOS](https://docs.fedoraproject.org/en-US/fedora-coreos/) supports
 many different platforms, and can be used as a starting point to "rebase" to a
-custom derived image from CentOS boot.
+custom derived image from CentOS boot.  These commands should all be invoked
+as root.
 
 ```shell
 systemctl mask --now zincati && rm -vf /run/ostree/staged-deployment-locked
 echo "# dummy change" >> "/etc/sudoers.d/coreos-sudo-group"
+cp -a ~core/.ssh/authorized_keys.d/ignition ~core/.ssh/authorized_keys
 rpm-ostree rebase ostree-unverified-registry:quay.io/centos-bootc/fedora-bootc:eln
 systemctl reboot
 ```
