@@ -3,7 +3,7 @@ postprocess:
   - |
     #!/usr/bin/env bash
     mkdir -p /usr/lib/dracut/dracut.conf.d
-    cat > /usr/lib/dracut/dracut.conf.d/01-bootc-nohostonly.conf
+    cat > /usr/lib/dracut/dracut.conf.d/01-bootc-nohostonly.conf << 'EOF'
     # We want a generic image; hostonly makes no sense as part of a server side build
     hostonly=no
     EOF
