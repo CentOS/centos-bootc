@@ -4,6 +4,7 @@ metadata:
   annotations:
     build.appstudio.openshift.io/repo: https://github.com/CentOS/centos-bootc?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: "{{revision}}"
+    build.appstudio.redhat.com/pull_request_number: "{{pull_request_number}}"
     build.appstudio.redhat.com/target_branch: "{{target_branch}}"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression:
@@ -11,7 +12,7 @@ metadata:
       == "main"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: centos-bootc
+    appstudio.openshift.io/application: fedora-bootc
     appstudio.openshift.io/component: fedora-bootc
     pipelines.appstudio.openshift.io/type: build
   name: fedora-bootc-on-push
@@ -23,7 +24,7 @@ spec:
     - name: git-url
       value: "{{repo_url}}"
     - name: output-image
-      value: quay.io/redhat-user-workloads/centos-bootc-tenant/centos-bootc/fedora-bootc:on-pr-{{revision}}
+      value: quay.io/redhat-user-workloads/centos-bootc-tenant/fedora-bootc/fedora-bootc:on-pr-{{revision}}
     - name: path-context
       value: .
     - name: revision
