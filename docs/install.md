@@ -14,6 +14,9 @@ There is a `root` user present, but its password is locked.
 Many people who just want to "try things out" will find it easiest to start
 with [the cloud image](https://github.com/CentOS/centos-bootc-layered/tree/main/cloud).
 
+The [bootc playground](https://github.com/vrothberg/bootc-playground) repository
+helps automate this.
+
 ## Installation using Anaconda
 
 Tools like
