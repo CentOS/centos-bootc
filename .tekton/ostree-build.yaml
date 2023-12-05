@@ -340,7 +340,7 @@ spec:
         - name: COMMIT_SHA
           value: $(tasks.clone-repository.results.commit)
         - name: PLATFORM
-          value: linux/s390x
+          value: linux/ppc64le
         - name: BUILDER_IMAGE
           value: quay.io/centos-bootc/builder:latest
       runAfter:
