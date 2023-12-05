@@ -449,7 +449,7 @@ spec:
           - name: name
             value: clair-scan
           - name: bundle
-            value: quay.io/redhat-appstudio-tekton-catalog/task-clair-scan:0.1@sha256:3691a67eae1e098959fb18ce415dbc489baf214b2bfa8321f95e096decb87538
+            value: quay.io/redhat-appstudio-tekton-catalog/task-clair-scan:0.1@sha256:ec6156c4a4a0777eb59a0355b9ad8257c1d39dc28b8eb8dea1446b3f682a77a8
           - name: kind
             value: task
         resolver: bundles
