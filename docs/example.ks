@@ -1,5 +1,7 @@
 text
-
+# NOTE: As of the time of this writing, this kickstart only
+# works with a Fedora 40+ (or ELN) installer ISO as it requires
+# https://github.com/rhinstaller/anaconda/pull/5342
 # Basic partitioning
 clearpart --all --initlabel --disklabel=gpt
 part /boot --size=1000  --fstype=ext4 --label=boot
