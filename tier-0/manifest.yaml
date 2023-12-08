@@ -55,6 +55,7 @@ conditional-include:
 
 include:
   - ostree.yaml
+  - bootc-config.yaml
   - initramfs.yaml
 
 packages:
