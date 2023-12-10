@@ -10,13 +10,3 @@ exclude-packages:
   # chosen as the package to satisfy the `kernel-core` dependency from
   # the kernel package.
   - kernel-debug-core
-
-postprocess:
-  # XFS is our default filesystem
-  - |
-    #!/usr/bin/env bash
-    mkdir -p /usr/lib/bootc/install/
-    cat > /usr/lib/bootc/install/20-rhel.toml << EOF
-    [install]
-    root-fs-type = "xfs"
-    EOF
