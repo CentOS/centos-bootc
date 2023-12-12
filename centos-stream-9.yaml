@@ -5,3 +5,12 @@ variables:
 repos:
   - baseos
   - appstream
+  # And pull in the devel composes optionally to faster track things;
+  # TODO make a container that tracks this too
+  - baseos-devel
+  - appstream-devel
+
+repo-packages:
+  - repo: appstream-devel
+    packages:
+      - bootupd
