@@ -6,7 +6,7 @@ postprocess:
     cat > /usr/lib/dracut/dracut.conf.d/20-bootc-base.conf << 'EOF'
     # We want a generic image; hostonly makes no sense as part of a server side build
     hostonly=no
-    dracutmodules+=" kernel-modules dracut-systemd systemd-initrd base "
+    dracutmodules+=" kernel-modules dracut-systemd systemd-initrd base ostree "
     EOF
     cat > /usr/lib/dracut/dracut.conf.d/49-bootc-tpm2-tss.conf << 'EOF'
     # We want this for systemd-cryptsetup tpm2 locking
