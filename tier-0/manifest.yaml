@@ -50,7 +50,7 @@ remove-from-packages:
   - [dbus-common, /usr/lib/sysusers.d/dbus.conf]
 
 conditional-include:
-  - if: distro != "stream9"
+  - if: distro == "eln"
     include: bootc.yaml
 
 include:
