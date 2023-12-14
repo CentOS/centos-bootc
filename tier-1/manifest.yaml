@@ -4,7 +4,7 @@ recommends: true
 include:
   - manifest-tier-0.yaml
   - bootable-rpm-ostree.yaml
-  - dnf.yaml
+  - rpm-packaging.yaml
   - podman.yaml
   - firmware.yaml
   - networking-tools.yaml

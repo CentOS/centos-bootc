@@ -2,3 +2,5 @@
 # `dnf update` *client side* doesn't do much helpful...
 packages:
   - dnf
+  # To ensure we can enable client certs to access RHEL content
+  - subscription-manager
