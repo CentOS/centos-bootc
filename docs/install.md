@@ -46,7 +46,7 @@ supports generating disk images, including injecting user accounts.
 There's also an [osbuildbootc](https://github.com/cgwalters/osbuildbootc) tool that
 will be merged with the above.
 
-## Using `bootc install-to-filesystem --replace=alongside` with a cloud image
+## Using `bootc install to-filesystem --replace=alongside` with a cloud image
 
 A toplevel goal of this project is that the "source of truth" for Linux
 operating system management is a container image registry - as opposed to e.g. a
@@ -55,7 +55,7 @@ infrastructure to e.g. manage garbage collection or versioning of cloud (IaaS)
 VM images.
 
 The latest releases of `bootc` have support for
-`bootc install-to-filesystem --replace=alongside`. More about this core mechanic
+`bootc install to-filesystem --replace=alongside`. More about this core mechanic
 in the
 [bootc install docs](https://github.com/containers/bootc/blob/main/docs/install.md).
 
@@ -65,7 +65,7 @@ configuration.
 
 ```shell
 dnf -y install podman skopeo
-podman run --rm --privileged --pid=host -v /:/target --security-opt label=type:unconfined_t <yourimage> bootc install-to-filesystem --target-no-signature-verification --karg=console=ttyS0,115200n8 --replace=alongside /target
+podman run --rm --privileged --pid=host -v /:/target --security-opt label=type:unconfined_t <yourimage> bootc install to-filesystem --karg=console=ttyS0,115200n8 --replace=alongside /target
 reboot
 ```
 
