@@ -90,5 +90,6 @@ setup necessary to contact the IPA server.
 
 The following git repositories have some useful examples:
 
+- [centos-boot-examples](https://gitlab.com/CentOS/cloud/centos-boot-examples)
 - [coreos/layering-examples](https://github.com/coreos/layering-examples)
 - [openshift/rhcos-image-layering-examples](https://github.com/openshift/rhcos-image-layering-examples/)
