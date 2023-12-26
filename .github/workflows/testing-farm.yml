@@ -1,0 +1,26 @@
+name: Schedule test on Testing Farm
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  tests:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo and switch to corresponding pull request
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Schedule test on Testing Farm
+        uses: sclorg/testing-farm-as-github-action@v1.3.1
+        with:
+          api_key: ${{ secrets.TESTING_FARM_API_TOKEN }}
+          git_url: https://github.com/centos/centos-bootc
+          git_ref: ${{ github.ref }}
+          pull_request_status_name: "Fedora"
