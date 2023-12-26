@@ -1,0 +1,43 @@
+name: Testing farm tests
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  testing-farm:
+    name: "Run in testing farm"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get User Permission
+        id: checkAccess
+        uses: actions-cool/check-user-permission@v2.2.0
+        with:
+          require: write
+          username: ${{ github.triggering_actor }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check User Permission
+        if: steps.checkAccess.outputs.require-result == 'false'
+        run: |
+          echo "${{ github.triggering_actor }} does not have permissions on this repo."
+          echo "Current permission level is ${{ steps.checkAccess.outputs.user-permission }}"
+          echo "Job originally triggered by ${{ github.actor }}"
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Schedule test on Testing Farm
+        uses: sclorg/testing-farm-as-github-action@v1.3.1
+        with:
+          compose: Fedora-39
+          api_key: ${{ secrets.TESTING_FARM_API_TOKEN }}
+          git_url: ${{ github.event.pull_request.head.repo.clone_url }}
+          git_ref: ${{ github.event.pull_request.head.ref }}
+          tmt_plan_regex: "example"
+          pull_request_status_name: "Testing farm"
+          tf_scope: private

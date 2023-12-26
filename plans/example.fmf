@@ -1,0 +1,7 @@
+summary: Example test
+execute:
+    how: tmt
+    script: |
+        set +x
+        dnf install -y tmt
+        tmt --help
