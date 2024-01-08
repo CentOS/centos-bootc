@@ -1,0 +1,34 @@
+summary: Run all tests inside a VM environment
+provision:
+  how: virtual
+  image: fedora:39
+  hardware:
+    virtualization:
+      is-supported: true
+prepare:
+  how: install
+  package:
+    - jq
+    - podman
+    - pytest
+    - python3-flake8
+    - python3-paramiko
+    - qemu-kvm
+execute:
+  how: tmt
+  script: |
+    # XXX: move tests out of main bootc-image-builder repo into a shared one?
+    git clone https://github.com/osbuild/bootc-image-builder
+    cd bootc-image-builder
+
+    echo "$SNAPSHOT" | base64 -d
+    # tmt injects ${SNAPSHOT} as a string
+    IMAGES=$(echo '${SNAPSHOT}' | base64 -d | jq -r '.components[].containerImage')
+
+    for IMAGE in $IMAGES; do
+        echo "Running integration tests for image: $IMAGE"
+        # use "stable" bootc image builder to generate the images
+        BIB_TEST_BUILD_CONTAINER_TAG=quay.io/centos-bootc/bootc-image-builder:latest \
+        BIB_TEST_BOOTC_CONTAINER_TAG="$IMAGE" \
+      pytest -s -vv
+    done
