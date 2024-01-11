@@ -43,6 +43,8 @@ helps inject kickstart for installation to virtual machines.
 The in-development [osbuild-deploy-container tool](https://github.com/osbuild/osbuild-deploy-container)
 supports generating disk images, including injecting user accounts.
 
+NOTE: this tool [does not yet work with centos stream 9](https://github.com/osbuild/bootc-image-builder/issues/20).
+
 There's also an [osbuildbootc](https://github.com/cgwalters/osbuildbootc) tool that
 will be merged with the above.
 
