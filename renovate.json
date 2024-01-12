@@ -3,9 +3,41 @@
   "extends": [
     "local>centos/.github:renovate-config"
   ],
+  "customDatasources": {
+    "fedora-eln-compose": {
+      "defaultRegistryUrlTemplate": "https://odcs.fedoraproject.org/composes/production",
+      "format": "html"
+    }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "fedora-eln.repo"
+      ],
+      "matchStrings": [
+        "https://odcs.fedoraproject.org/composes/production/(?<currentValue>.*)"
+      ],
+      "datasourceTemplate": "custom.fedora-eln-compose",
+      "depNameTemplate": "Fedora-ELN",
+      "versioningTemplate": "regex:^Fedora-ELN-(?<major>\\d{8})\\.(?<minor>\\d+)$"
+    }
+  ],
   "packageRules": [
     {
-      "matchPackageNames": ["quay.io/centos-bootc/builder"],
+      "matchDatasources": [
+        "custom.fedora-eln-compose"
+      ],
+      "extractVersion": "(?<version>.+)/$",
+      "automerge": true,
+      "schedule": [
+        "at any time"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "quay.io/centos-bootc/builder"
+      ],
       "pinDigests": false
     }
   ]
