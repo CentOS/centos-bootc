@@ -49,11 +49,8 @@ remove-from-packages:
   # https://bugzilla.redhat.com/show_bug.cgi?id=2105177
   - [dbus-common, /usr/lib/sysusers.d/dbus.conf]
 
-conditional-include:
-  - if: distro == "eln"
-    include: bootc.yaml
-
 include:
+  - bootc.yaml
   - ostree.yaml
   - bootc-config.yaml
   - initramfs.yaml
