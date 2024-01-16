@@ -16,7 +16,7 @@
         "fedora-eln.repo"
       ],
       "matchStrings": [
-        "https://odcs.fedoraproject.org/composes/production/(?<currentValue>.*)"
+        "https://odcs.fedoraproject.org/composes/production/(?<currentValue>.*)/compose/(.*)"
       ],
       "datasourceTemplate": "custom.fedora-eln-compose",
       "depNameTemplate": "Fedora-ELN",
