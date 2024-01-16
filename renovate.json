@@ -7,6 +7,10 @@
     "fedora-eln-compose": {
       "defaultRegistryUrlTemplate": "https://odcs.fedoraproject.org/composes/production",
       "format": "html"
+    },
+    "c9s-compose": {
+      "defaultRegistryUrlTemplate": "https://odcs.stream.centos.org/development/",
+      "format": "html"
     }
   },
   "customManagers": [
@@ -21,12 +25,25 @@
       "datasourceTemplate": "custom.fedora-eln-compose",
       "depNameTemplate": "Fedora-ELN",
       "versioningTemplate": "regex:^Fedora-ELN-(?<major>\\d{8})\\.(?<minor>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "c9s-devel-compose.repo"
+      ],
+      "matchStrings": [
+        "https://composes.stream.centos.org/development/(?<currentValue>.*)/compose/(.*)"
+      ],
+      "datasourceTemplate": "c9s-compose",
+      "depNameTemplate": "CentOS-Stream-9",
+      "versioningTemplate": "regex:^CentOS-Stream-9-(?<minor>\\d{8})\\.d\\.0$"
     }
   ],
   "packageRules": [
     {
       "matchDatasources": [
-        "custom.fedora-eln-compose"
+        "custom.fedora-eln-compose",
+        "custom.c9s-compose"
       ],
       "extractVersion": "(?<version>.+)/$",
       "automerge": true,
