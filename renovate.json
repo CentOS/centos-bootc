@@ -32,7 +32,8 @@
       "automerge": true,
       "schedule": [
         "at any time"
-      ]
+      ],
+      "groupName": null
     },
     {
       "matchPackageNames": [
