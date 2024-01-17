@@ -9,7 +9,7 @@
       "format": "html"
     },
     "c9s-compose": {
-      "defaultRegistryUrlTemplate": "https://odcs.stream.centos.org/development/",
+      "defaultRegistryUrlTemplate": "https://composes.stream.centos.org/development/",
       "format": "html"
     }
   },
