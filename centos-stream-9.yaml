@@ -9,10 +9,8 @@ repos:
   # TODO make a container that tracks this too
   - baseos-devel
   - appstream-devel
-  - appstream-odcs-4383
 
 repo-packages:
-  - repo: appstream-odcs-4383
-    # To fix https://github.com/CentOS/centos-bootc/issues/124
+  - repo: appstream-devel
     packages:
       - bootupd
