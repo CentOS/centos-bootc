@@ -1,0 +1,30 @@
+summary: Example of working with Snapshots from RHTAP
+
+prepare:
+  - name: Install packages
+    how: install
+    package:
+      # For working with the SNAPSHOT var
+      - jq
+      # Just for interacting with the images
+      - podman
+
+execute:
+    # Note, the ' character works here because the ${SNAPSHOT} is not a shell
+    # environment variable. it is treated by tmt as a tmt variable which is
+    # injected into the script before it is evaluated by bash.
+    script: |
+        echo "This is where the test script goes."
+
+        echo "The base64 encoded snapshot is: ${SNAPSHOT}"
+        echo -n "The base64 decoded snapshot is: "
+        echo $SNAPSHOT | base64 -d
+
+        echo "It contains the following container images:"
+
+        IMAGES=$(echo '${SNAPSHOT}' | base64 -d | jq -r '.components[].containerImage')
+
+        # Then, perform some check
+        for IMAGE in $IMAGES; do
+            podman run $IMAGE cat /etc/os-release
+        done
