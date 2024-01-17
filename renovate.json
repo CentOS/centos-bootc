@@ -42,7 +42,17 @@
   "packageRules": [
     {
       "matchDatasources": [
-        "custom.fedora-eln-compose",
+        "custom.fedora-eln-compose"
+      ],
+      "extractVersion": "(?<version>.+)/$",
+      "automerge": true,
+      "schedule": [
+        "at any time"
+      ],
+      "groupName": null
+    },
+    {
+      "matchDatasources": [
         "custom.c9s-compose"
       ],
       "extractVersion": "(?<version>.+)/$",
