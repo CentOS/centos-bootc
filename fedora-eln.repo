@@ -21,7 +21,7 @@
 
 [eln-baseos]
 name=Fedora - ELN BaseOS - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/BaseOS/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/BaseOS/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=1
 countme=1
@@ -34,7 +34,7 @@ skip_if_unavailable=False
 
 [eln-baseos-debuginfo]
 name=Fedora - ELN BaseOS - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/BaseOS/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/BaseOS/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -46,7 +46,7 @@ skip_if_unavailable=False
 
 [eln-baseos-source]
 name=Fedora - ELN BaseOS - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/BaseOS/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/BaseOS/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -60,7 +60,7 @@ skip_if_unavailable=False
 
 [eln-appstream]
 name=Fedora - ELN AppStream - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/AppStream/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/AppStream/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=1
 countme=1
@@ -73,7 +73,7 @@ skip_if_unavailable=False
 
 [eln-appstream-debuginfo]
 name=Fedora - ELN AppStream - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/AppStream/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/AppStream/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -85,7 +85,7 @@ skip_if_unavailable=False
 
 [eln-appstream-source]
 name=Fedora - ELN AppStream - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/AppStream/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/AppStream/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -99,7 +99,7 @@ skip_if_unavailable=False
 
 [eln-crb]
 name=Fedora - ELN CRB - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/CRB/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/CRB/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=1
 countme=1
@@ -112,7 +112,7 @@ skip_if_unavailable=False
 
 [eln-crb-debuginfo]
 name=Fedora - ELN CRB - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/CRB/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/CRB/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -124,7 +124,7 @@ skip_if_unavailable=False
 
 [eln-crb-source]
 name=Fedora - ELN CRB - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/CRB/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/CRB/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -138,7 +138,7 @@ skip_if_unavailable=False
 
 [eln-extras]
 name=Fedora - ELN Extras - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/Extras/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/Extras/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=1
 countme=1
@@ -151,7 +151,7 @@ skip_if_unavailable=False
 
 [eln-extras-debuginfo]
 name=Fedora - ELN Extras - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/Extras/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/Extras/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -163,7 +163,7 @@ skip_if_unavailable=False
 
 [eln-extras-source]
 name=Fedora - ELN Extras - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/Extras/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/Extras/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -177,7 +177,7 @@ skip_if_unavailable=False
 
 [eln-ha]
 name=Fedora - ELN HighAvailability - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/HighAvailability/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/HighAvailability/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=0
 countme=1
@@ -190,7 +190,7 @@ skip_if_unavailable=False
 
 [eln-ha-debuginfo]
 name=Fedora - ELN HighAvailability - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/HighAvailability/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/HighAvailability/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -202,7 +202,7 @@ skip_if_unavailable=False
 
 [eln-ha-source]
 name=Fedora - ELN HighAvailability - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/HighAvailability/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/HighAvailability/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -216,7 +216,7 @@ skip_if_unavailable=False
 
 [eln-rs]
 name=Fedora - ELN ResilientStorage - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/ResilientStorage/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/ResilientStorage/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=0
 countme=1
@@ -229,7 +229,7 @@ skip_if_unavailable=False
 
 [eln-rs-debuginfo]
 name=Fedora - ELN ResilientStorage - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/ResilientStorage/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/ResilientStorage/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -241,7 +241,7 @@ skip_if_unavailable=False
 
 [eln-rs-source]
 name=Fedora - ELN ResilientStorage - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/ResilientStorage/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/ResilientStorage/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -255,7 +255,7 @@ skip_if_unavailable=False
 
 [eln-rt]
 name=Fedora - ELN RT - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/RT/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/RT/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=0
 countme=1
@@ -268,7 +268,7 @@ skip_if_unavailable=False
 
 [eln-rt-debuginfo]
 name=Fedora - ELN RT - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/RT/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/RT/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -280,7 +280,7 @@ skip_if_unavailable=False
 
 [eln-rt-source]
 name=Fedora - ELN RT - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/RT/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/RT/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -294,7 +294,7 @@ skip_if_unavailable=False
 
 [eln-nfv]
 name=Fedora - ELN NFV - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/NFV/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/NFV/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=0
 countme=1
@@ -307,7 +307,7 @@ skip_if_unavailable=False
 
 [eln-nfv-debuginfo]
 name=Fedora - ELN NFV - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/NFV/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/NFV/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -319,7 +319,7 @@ skip_if_unavailable=False
 
 [eln-nfv-source]
 name=Fedora - ELN NFV - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/NFV/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/NFV/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -333,7 +333,7 @@ skip_if_unavailable=False
 
 [eln-sap]
 name=Fedora - ELN SAP - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/SAP/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/SAP/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=0
 countme=1
@@ -346,7 +346,7 @@ skip_if_unavailable=False
 
 [eln-sap-debuginfo]
 name=Fedora - ELN SAP - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/SAP/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/SAP/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -358,7 +358,7 @@ skip_if_unavailable=False
 
 [eln-sap-source]
 name=Fedora - ELN SAP - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/SAP/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/SAP/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -372,7 +372,7 @@ skip_if_unavailable=False
 
 [eln-saphana]
 name=Fedora - ELN SAPHANA - Developmental packages for the next Enterprise Linux release
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/SAPHANA/$basearch/os/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/SAPHANA/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln&arch=$basearch
 enabled=0
 countme=1
@@ -385,7 +385,7 @@ skip_if_unavailable=False
 
 [eln-saphana-debuginfo]
 name=Fedora - ELN SAPHANA - Debug
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/SAPHANA/$basearch/debug/tree
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/SAPHANA/$basearch/debug/tree
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-debug&arch=$basearch
 enabled=0
 metadata_expire=6h
@@ -397,7 +397,7 @@ skip_if_unavailable=False
 
 [eln-saphana-source]
 name=Fedora - ELN SAPHANA - Source
-baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.4/compose/SAPHANA/source/tree/
+baseurl=https://odcs.fedoraproject.org/composes/production/Fedora-ELN-20240117.5/compose/SAPHANA/source/tree/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=eln-source&arch=$basearch
 enabled=0
 metadata_expire=6h
