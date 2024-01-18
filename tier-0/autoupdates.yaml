@@ -1,0 +1,11 @@
+# Enable automatic updates by default
+
+# Configuration for bootc
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    set -euo pipefail
+    target=/usr/lib/systemd/system/default.target.wants
+    mkdir -p $target
+    set -x
+    ln -s ../bootc-fetch-apply-updates.service $target

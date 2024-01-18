@@ -54,6 +54,7 @@ include:
   - ostree.yaml
   - bootc-config.yaml
   - initramfs.yaml
+  - autoupdates.yaml
 
 packages:
   # Even in tier-0, we have this.  If you don't want SELinux today, you'll need
