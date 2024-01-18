@@ -86,6 +86,36 @@ to use the network as source of truth for authentication, using e.g. [FreeIPA](h
 That avoids the need to hardcode any users or keys in the image, just the
 setup necessary to contact the IPA server.
 
+### Avoiding home directory persistence
+
+In a default installation, the `/root` and `/home` directories are persistent,
+and are symbolic links to `/var/roothome` and `/var/home` respectively. This
+persistence is typically highly desirable for machines that are somewhat "pet"
+like, from desktops to some types of servers, and often undesirable for
+scale-out servers and edge devices.
+
+It's recommended for most use cases that don't want a persistent home
+directory to inject a systemd unit like this for both these directories,
+that uses [tmpfs](https://www.kernel.org/doc/html/latest/filesystems/tmpfs.html):
+
+```systemd
+[Unit]
+Description=Create a temporary filesystem for /var/home
+DefaultDependencies=no
+Conflicts=umount.target
+Before=local-fs.target umount.target
+After=swap.target
+
+[Mount]
+What=tmpfs
+Where=/var/home
+Type=tmpfs
+```
+
+If your systems management tooling discovers SSH keys dynamically
+on boot (cloud-init, afterburn, etc.) this helps ensure that there's fewer
+conflicts around "source of truth" for keys.
+
 ## Example repositories
 
 The following git repositories have some useful examples:
