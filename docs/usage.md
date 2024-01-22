@@ -29,7 +29,7 @@ it more closely aligns with "immutable infrastructure" model.
 
 ### Using presets
 
-If nevertheless you want to use presets instead of "static enablement", One
+If nevertheless you want to use presets instead of "static enablement", one
 recommended pattern to avoid this problem (nd is also somewhat of a best
 practice anyways) is to use a common prefix (e.g. `examplecorp-` for all of your
 custom systemd units), resulting in `examplecorp-checkin.service`,
