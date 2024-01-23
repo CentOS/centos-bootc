@@ -7,8 +7,9 @@ postprocess:
     #!/usr/bin/env bash
     mkdir -p /usr/lib/ostree
     cat > /usr/lib/ostree/prepare-root.conf << EOF
-    [root]
-    transient = true
+    # TODO disabled due to https://github.com/osbuild/bootc-image-builder/issues/149
+    #[root]
+    #transient = true
     [sysroot]
     readonly = true
     EOF
