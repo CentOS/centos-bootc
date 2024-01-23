@@ -1,6 +1,4 @@
 # Enable automatic updates by default
-
-# Configuration for bootc
 postprocess:
   - |
     #!/usr/bin/env bash
