@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: centos-bootc
+  annotations:
+    github.com/project-slug: CentOS/centos-bootc
+spec:
+  type: other
+  lifecycle: experimental
+  owner: redhat/platform-engineering
