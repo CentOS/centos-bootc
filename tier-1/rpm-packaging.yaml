@@ -4,3 +4,13 @@ packages:
   - dnf
   # To ensure we can enable client certs to access RHEL content
   - subscription-manager
+
+postprocess:
+  # These enable librhsm which enables host subscriptions to work in containers
+  # https://github.com/rpm-software-management/librhsm/blob/fcd972cbe7c8a3907ba9f091cd082b1090231492/rhsm/rhsm-context.c#L30
+  # https://github.com/openshift/os/pull/876/commits/dd35dd0e102aeed90df14f05c8ae9da4c8c5962a
+  - |
+    #!/usr/bin/bash
+    set -xeuo pipefail
+    ln -sr /run/secrets/etc-pki-entitlement /etc/pki/entitlement-host
+    ln -sr /run/secrets/rhsm /etc/rhsm-host
