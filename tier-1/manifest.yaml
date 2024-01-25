@@ -12,6 +12,7 @@ include:
   - user-experience.yaml
   - fwupd.yaml
   - persistent-journal.yaml
+  - initramfs-full.yaml
 
 packages:
   # Include and set the default editor
