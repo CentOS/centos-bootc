@@ -24,8 +24,6 @@ helps automate this.
 The [bootc-image-builder tool](https://github.com/osbuild/bootc-image-builder)
 supports generating disk images, including injecting user accounts.
 
-NOTE: this tool [does not yet work with centos stream 9](https://github.com/osbuild/bootc-image-builder/issues/20).
-
 ## Generating a raw disk image that can be launched via virt tooling
 
 The above bootc-image-builder tool can generate disk images; however, a key part
@@ -44,8 +42,6 @@ to inject a SSH key for root.  The above page has this example for qemu:
 ```bash
 -smbios type=11,value=io.systemd.credential.binary:tmpfiles.extra=$(echo "f~ /root/.ssh/authorized_keys 600 root root - $(ssh-add -L | base64 -w 0)" | base64 -w 0)
 ```
-
-Unlike current bootc-image-builder, this flow works with current CentOS Stream 9.
 
 ## Installation using Anaconda
 
