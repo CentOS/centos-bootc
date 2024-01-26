@@ -116,6 +116,17 @@ If your systems management tooling discovers SSH keys dynamically
 on boot (cloud-init, afterburn, etc.) this helps ensure that there's fewer
 conflicts around "source of truth" for keys.
 
+### Usage of `ostree container commit`
+
+While you may find `RUN ostree container commit` as part of some
+container builds, specifically this project aims to use
+`root.transient` which obviates most of the incompatibility
+detection done in that command.
+
+In other words it's not needed and as of recently does very little.  We are likely
+to introduce a new static-analyzer type process with a different name
+and functionality in the future.
+
 ## Example repositories
 
 The following git repositories have some useful examples:
