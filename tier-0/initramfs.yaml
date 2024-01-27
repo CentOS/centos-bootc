@@ -8,6 +8,10 @@ postprocess:
     hostonly=no
     dracutmodules+=" kernel-modules dracut-systemd systemd-initrd base ostree "
     EOF
+    cat > /usr/lib/dracut/dracut.conf.d/22-bootc-generic.conf << 'EOF'
+    # Extra modules that we want by default that are known to exist in the kernel
+    dracutmodules+=" virtiofs "
+    EOF
     cat > /usr/lib/dracut/dracut.conf.d/49-bootc-tpm2-tss.conf << 'EOF'
     # We want this for systemd-cryptsetup tpm2 locking
     dracutmodules+=" tpm2-tss "
