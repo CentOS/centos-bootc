@@ -2,9 +2,8 @@
 # Modern defaults we want
 boot-location: modules
 tmp-is-dir: true
-# This one at least historically broke compatibility with Anaconda, but
-# let's use it by default now.
-machineid-compat: false
+# https://github.com/CentOS/centos-bootc/issues/167
+machineid-compat: true
 # Be minimal
 recommends: false
 
