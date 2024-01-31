@@ -29,6 +29,8 @@ spec:
       value: .
     - name: revision
       value: "{{revision}}"
+    - name: config-file
+      value: "fedora-bootc-config.json"
   pipelineRef:
     name: ostree-build
   workspaces:
