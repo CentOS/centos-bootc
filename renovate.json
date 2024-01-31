@@ -17,10 +17,12 @@
     {
       "customType": "regex",
       "fileMatch": [
-        "fedora-eln.repo"
+        "fedora-eln.repo",
+        "fedora-bootc-config.json"
       ],
       "matchStrings": [
-        "https://odcs.fedoraproject.org/composes/production/(?<currentValue>.*)/compose/(.*)"
+        "https://odcs.fedoraproject.org/composes/production/(?<currentValue>.*)/compose/(.*)",
+        "\"redhat.compose-id\": \"(?<currentValue>.*)\""
       ],
       "datasourceTemplate": "custom.fedora-eln-compose",
       "depNameTemplate": "Fedora-ELN",
@@ -29,10 +31,12 @@
     {
       "customType": "regex",
       "fileMatch": [
-        "c9s-devel-compose.repo"
+        "c9s-devel-compose.repo",
+        "centos-bootc-config.json"
       ],
       "matchStrings": [
-        "https://composes.stream.centos.org/development/(?<currentValue>.*)/compose/(.*)"
+        "https://composes.stream.centos.org/development/(?<currentValue>.*)/compose/(.*)",
+        "\"redhat.compose-id\": \"(?<currentValue>.*)\""
       ],
       "datasourceTemplate": "custom.c9s-compose",
       "depNameTemplate": "CentOS-Stream-9",
