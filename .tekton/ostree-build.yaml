@@ -74,6 +74,10 @@ spec:
         Image tag expiration time, time values could be something like
         1h, 2d, 3w for hours, days, and weeks, respectively.
       name: image-expires-after
+    - name: config-file
+      description: config file to use for rpm-ostree tool
+      type: string
+      default: ""
   results:
     - description: ""
       name: IMAGE_URL
@@ -232,6 +236,8 @@ spec:
           value: linux/amd64
         - name: BUILDER_IMAGE
           value: quay.io/centos-bootc/builder:latest
+        - name: CONFIG_FILE
+          value: $(params.config-file)
       runAfter:
         - clone-repository
       taskRef:
@@ -267,6 +273,8 @@ spec:
           value: linux/arm64
         - name: BUILDER_IMAGE
           value: quay.io/centos-bootc/builder:latest
+        - name: CONFIG_FILE
+          value: $(params.config-file)
       runAfter:
         - clone-repository-arm64
       taskRef:
@@ -302,6 +310,8 @@ spec:
           value: linux/s390x
         - name: BUILDER_IMAGE
           value: quay.io/centos-bootc/builder:latest
+        - name: CONFIG_FILE
+          value: $(params.config-file)
       runAfter:
         - clone-repository-s390x
       taskRef:
@@ -337,6 +347,8 @@ spec:
           value: linux/ppc64le
         - name: BUILDER_IMAGE
           value: quay.io/centos-bootc/builder:latest
+        - name: CONFIG_FILE
+          value: $(params.config-file)
       runAfter:
         - clone-repository-ppc64le
       taskRef:
