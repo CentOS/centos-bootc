@@ -2,9 +2,21 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: centos-bootc
+  description: Create and maintain base bootable container images from Fedora ELN and CentOS Stream packages.
   annotations:
     github.com/project-slug: CentOS/centos-bootc
+    jira/project-key: BIFROST
+    feedback/type: JIRA
+    feedback/host: https://issues.redhat.com
+  links:
+    - url: https://centos.github.io/centos-bootc/
+      title: documentation
+    - url: https://app.slack.com/client/E030G10V24F/C02CU30L7GF
+      title: slack channel
+      icon: chat
+  tags:
+    - bifrost
 spec:
-  type: other
+  type: library
   lifecycle: experimental
   owner: redhat/platform-engineering
