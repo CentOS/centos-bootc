@@ -1,6 +1,6 @@
 {
     "Labels": {
-        "redhat.compose-id": "CentOS-Stream-9-20240131.d.0",
+        "redhat.compose-id": "CentOS-Stream-9-20240202.d.0",
         "redhat.id": "centos",
         "redhat.version-id": "9"
     }

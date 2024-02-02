@@ -1,6 +1,6 @@
 [baseos-devel]
 name=CentOS Stream 9 development - BaseOS
-baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240131.d.0/compose/BaseOS/$basearch/os
+baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240202.d.0/compose/BaseOS/$basearch/os
 gpgcheck=0
 repo_gpgcheck=0
 enabled=1
@@ -9,7 +9,7 @@ priority=1000
 
 [appstream-devel]
 name=CentOS Stream 9 development - AppStream
-baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240131.d.0/compose/AppStream/$basearch/os
+baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240202.d.0/compose/AppStream/$basearch/os
 gpgcheck=0
 repo_gpgcheck=0
 enabled=1
@@ -18,7 +18,7 @@ priority=1000
 
 [nfv-devel]
 name=CentOS Stream 9 development - NFV
-baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240131.d.0/compose/NFV/$basearch/os
+baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240202.d.0/compose/NFV/$basearch/os
 gpgcheck=0
 repo_gpgcheck=0
 enabled=1
@@ -27,7 +27,7 @@ priority=1000
 
 [rt-devel]
 name=CentOS Stream 9 development - RT
-baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240131.d.0/compose/RT/$basearch/os
+baseurl=https://composes.stream.centos.org/development/CentOS-Stream-9-20240202.d.0/compose/RT/$basearch/os
 gpgcheck=0
 repo_gpgcheck=0
 enabled=1
