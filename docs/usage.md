@@ -82,7 +82,9 @@ COPY 50-weekly.conf /usr/lib/systemd/system/bootc-fetch-apply-updates.timer.d
 
 For environments without a direct connection to a centralized container
 registry, we encourage mirroring an on-premise registry if possible or manually
-moving container images using `skopeo copy`.  See [this blog](https://www.redhat.com/sysadmin/manage-container-registries) for example.
+moving container images using `skopeo copy`.
+See [this blog](https://www.redhat.com/sysadmin/manage-container-registries)
+for example.
 
 For systems that require manual updates via USB drives, this procedure
 describes how to use `skopeo` and `bootc switch`.
