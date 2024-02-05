@@ -57,6 +57,10 @@ First, one can disable the timer entirely as part of a container build:
 RUN systemctl mask bootc-fetch-apply-updates.timer
 ```
 
+This is useful for environments where manually updating the systems is
+preferred, or having another tool perform schedule and execute the
+updates, e.g. Ansible.
+
 Alternatively, one can use systemd "drop-ins" to override the timer
 (for example, to schedule updates for once a week), create a file
 like this, named e.g. `50-weekly.conf`:
@@ -73,6 +77,43 @@ Then add it into your container:
 RUN mkdir -p /usr/lib/systemd/system/bootc-fetch-apply-updates.timer.d
 COPY 50-weekly.conf /usr/lib/systemd/system/bootc-fetch-apply-updates.timer.d
 ```
+
+## Air-gapped and dissconnected updates
+
+For environments without a direct connection to a centralized container
+registry, we encourage mirroring an on-premise registry if possible or manually
+moving container images using `skopeo copy`.  See [this blog](https://www.redhat.com/sysadmin/manage-container-registries) for example.
+
+For systems that require manual updates via USB drives, this procedure
+describes how to use `skopeo` and `bootc switch`.
+
+Copy image to USB Drive:
+
+```skopeo copy docker://[registry]/[path to image] dir://run/media/$USER/$DRIVE/$DIR```
+
+*note, Using the dir transport will create a number of files,
+and it's recommended to place the image in it's own directory.
+If the image is local the containers-storage transport will transfer
+the image from a system directly to the drive:
+
+```skopeo copy containers-storage:[image]:[tag] dir://run/media/$USER/$DRIVE/$DIR```
+
+From the client system, insert the USB drive and mount it:
+
+```mount /dev/$DRIVE /mnt```
+
+`bootc switch` will direct the system to look at this mount point for future
+updates, and is only necessary to run one time if you wish to continue
+consuming updates from USB devices. note that if the mount point changes,
+simply run this command to point to the alternate location. We recommend
+using the same location each time to simplfy this.
+
+```bootc switch --transport dir /mnt/$DIR```
+
+Finally `bootc upgrade` will 1) check for updates and 2) reboot the system
+when --apply is used.
+
+```bootc upgrade --apply```
 
 ## Filesystem interaction and layout
 
