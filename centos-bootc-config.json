@@ -1,5 +1,6 @@
 {
     "Labels": {
+        "containers.bootc": "1",
         "redhat.compose-id": "CentOS-Stream-9-20240205.d.0",
         "redhat.id": "centos",
         "redhat.version-id": "9"
