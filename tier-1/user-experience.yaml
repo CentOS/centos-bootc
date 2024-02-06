@@ -14,6 +14,8 @@ packages:
   - file
   - less
   - sudo
+  # Intended to be part of baseline RHEL-derived operating systems
+  - sos
   # File compression/decompression
   ## bsdtar - dependency of 35coreos-live dracut module
   - bsdtar
