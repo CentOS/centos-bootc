@@ -26,5 +26,8 @@ execute:
 
         # Then, perform some check
         for IMAGE in $IMAGES; do
-            podman run $IMAGE cat /etc/os-release
+            echo $IMAGE
+            # Comment out this line due to the quay.io flakes
+            # https://github.com/containers/podman/issues/16973
+            # podman run $IMAGE cat /etc/os-release
         done
