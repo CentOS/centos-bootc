@@ -68,7 +68,7 @@
     },
     {
       "matchPackageNames": [
-        "quay.io/centos-bootc/builder"
+        "quay.io/centos-bootc/bootc-image-builder"
       ],
       "pinDigests": false
     }
