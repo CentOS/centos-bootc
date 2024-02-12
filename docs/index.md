@@ -27,7 +27,7 @@ These images are intended to exactly match the content of the underlying distrib
 ### Layered images
 
 There are also layered images; for more information on these, see
-[the centos-bootc-layered repository](https://github.com/CentOS/centos-bootc-layered).
+[the centos-bootc-layered repository](https://gitlab.com/bootc-org/centos-bootc-layered).
 
 ### Development images
 
