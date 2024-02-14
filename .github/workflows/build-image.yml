@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: quay.io/centos-bootc/builder:latest
+      image: quay.io/centos-bootc/bootc-image-builder:latest
       options: --privileged
 
     strategy:
