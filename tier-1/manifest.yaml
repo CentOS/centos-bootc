@@ -17,8 +17,7 @@ include:
 packages:
   # Include and set the default editor
   - nano
-  # Minimal NFS client
-  - nfs-utils-coreos
+  - nfs-utils
   # Additional firewall support; we aren't including these in RHCOS or they
   # don't exist in RHEL
   - iptables-nft iptables-services
