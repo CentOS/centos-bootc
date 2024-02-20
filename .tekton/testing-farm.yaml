@@ -54,6 +54,11 @@ spec:
 
         export TESTING_FARM_API_TOKEN=$(cat /etc/secrets/testing-farm-token)
 
+        apk add jq
+
+        GIT_URL=$(echo "${SNAPSHOT}" | jq -r '.components[0].source.git.url')
+        GIT_REF=$(echo "${SNAPSHOT}" | jq -r '.components[0].source.git.revision')
+
         testing-farm request \
           --environment SNAPSHOT="$(echo ${SNAPSHOT} | base64 -w 0)" \
           --git-url "${GIT_URL}" \
