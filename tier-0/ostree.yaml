@@ -7,9 +7,8 @@ postprocess:
     #!/usr/bin/env bash
     mkdir -p /usr/lib/ostree
     cat > /usr/lib/ostree/prepare-root.conf << EOF
-    # TODO disabled due to https://github.com/osbuild/bootc-image-builder/issues/149
-    #[root]
-    #transient = true
+    [composefs]
+    enabled = true
     [sysroot]
     readonly = true
     EOF
