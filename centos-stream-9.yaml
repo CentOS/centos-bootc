@@ -13,4 +13,6 @@ repos:
 repo-packages:
   - repo: appstream-devel
     packages:
+      - bootc
+      - ostree
       - bootupd
