@@ -1,7 +1,7 @@
 {
     "Labels": {
         "containers.bootc": "1",
-        "redhat.compose-id": "Fedora-ELN-20240228.0",
+        "redhat.compose-id": "Fedora-ELN-20240228.1",
         "redhat.id": "fedora",
         "redhat.version-id": "ELN"
     }
