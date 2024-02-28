@@ -17,3 +17,10 @@ postprocess:
     if test '!' -f /usr/lib/systemd/system/local-fs.target.wants/tmp.mount; then
       ln -sf ../tmp.mount /usr/lib/systemd/system/local-fs.target.wants
     fi
+
+    # See https://github.com/containers/bootc/issues/358
+    # basically systemd-tmpfiles doesn't follow symlinks; ordinarily our
+    # tmpfiles.d unit for `/var/roothome` is fine, but this actually doesn't
+    # work if we want to use tmpfiles.d to write to `/root/.ssh` because
+    # tmpfiles gives up on that before getting to `/var/roothome`.
+    sed -ie 's, /root, /var/roothome,' /usr/lib/tmpfiles.d/provision.conf
