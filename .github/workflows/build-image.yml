@@ -17,15 +17,6 @@ jobs:
       image: quay.io/centos-bootc/bootc-image-builder:latest
       options: --privileged
 
-    strategy:
-      matrix:
-        os: [fedora, centos]
-        include:
-          - os: fedora
-            version: eln
-          - os: centos
-            version: stream9
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -33,4 +24,4 @@ jobs:
       - name: Build
         run: |
           rpm-ostree compose image --format=ociarchive \
-          --initialize ${{ matrix.os }}-bootc.yaml dest.oci-archive
+          --initialize centos-bootc.yaml dest.oci-archive
