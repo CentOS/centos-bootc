@@ -4,3 +4,7 @@ packages:
 
 exclude-packages:
   - kernel-debug
+
+# until https://github.com/coreos/rpm-ostree/issues/4726
+cliwrap-binaries:
+  - kernel-install
