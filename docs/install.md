@@ -2,7 +2,14 @@
 nav_order: 2
 ---
 
-# Trying out development builds
+# This document has moved
+
+See <https://bootc-org.gitlab.io/documentation/>
+
+---
+---
+
+## Trying out development builds
 
 Before you build a [derived container image](https://gitlab.com/bootc-org/examples),
 you may want to just get a feel for the system, try out `bootc`, etc.  The bootable
