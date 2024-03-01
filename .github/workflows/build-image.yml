@@ -17,12 +17,11 @@ jobs:
       image: quay.io/centos-bootc/bootc-image-builder:latest
       options: --privileged
 
+    # Yes, this is a one-element matrix, but we may add c10s in the future soon
     strategy:
       matrix:
-        os: [fedora, centos]
+        os: [centos]
         include:
-          - os: fedora
-            version: eln
           - os: centos
             version: stream9
 
