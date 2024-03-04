@@ -2,7 +2,14 @@
 nav_order: 4
 ---
 
-# Relationship with other projects
+# This document has moved
+
+See <https://bootc-org.gitlab.io/documentation/>
+
+---
+---
+
+## Relationship with other projects
 
 ## Fedora CoreOS
 

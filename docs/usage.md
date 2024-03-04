@@ -2,7 +2,14 @@
 nav_order: 3
 ---
 
-# Operating system content and usage
+# This document has moved
+
+See <https://bootc-org.gitlab.io/documentation/>
+
+---
+---
+
+## Operating system content and usage
 
 ## Configuring systemd units
 

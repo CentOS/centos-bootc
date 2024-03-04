@@ -2,7 +2,14 @@
 nav_order: 3
 ---
 
-# Configuring systems via container builds
+# This document has moved
+
+See <https://bootc-org.gitlab.io/documentation/>
+
+---
+---
+
+## Configuring systems via container builds
 
 A key part of the idea of this project is that every tool and technique
 one knows for building application container images should apply
