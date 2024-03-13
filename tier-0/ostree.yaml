@@ -8,7 +8,7 @@ postprocess:
     mkdir -p /usr/lib/ostree
     cat > /usr/lib/ostree/prepare-root.conf << EOF
     [composefs]
-    enabled = true
+    enabled = yes
     [sysroot]
     readonly = true
     EOF
