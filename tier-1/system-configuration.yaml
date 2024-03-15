@@ -12,6 +12,8 @@ packages:
   - e2fsprogs
   - sg3_utils
   - xfsprogs
+  ## This is generally useful... https://github.com/CentOS/centos-bootc/issues/394
+  - cloud-utils-growpart
   # User configuration
   - passwd
   - shadow-utils

@@ -18,7 +18,7 @@ for base operating system updates.
 
 ## More information
 
-See the [project documentation](https://centos.github.io/centos-bootc/).
+See <https://bootc-org.gitlab.io/documentation/>
 
 ## Badges
 
