@@ -1,6 +1,9 @@
 packages:
  - ostree nss-altfiles
 
+# We want content lifecycled with the image
+opt-usrlocal: "root"
+
 postprocess:
   # Set up default root config
   - |
