@@ -18,7 +18,7 @@ for base operating system updates.
 
 ## More information
 
-See <https://bootc-org.gitlab.io/documentation/>
+See: <https://bootc-org.gitlab.io/documentation/>
 
 ## Badges
 
