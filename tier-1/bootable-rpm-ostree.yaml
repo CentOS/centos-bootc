@@ -1,8 +1,0 @@
-packages:
- - rpm-ostree nss-altfiles
-
-exclude-packages:
-  # Exclude kernel-debug-core to make sure that it doesn't somehow get
-  # chosen as the package to satisfy the `kernel-core` dependency from
-  # the kernel package.
-  - kernel-debug-core
