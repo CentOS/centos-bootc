@@ -19,7 +19,7 @@ etc-group-members:
 
 # Default to `bash` in our container, the same as other containers we ship.
 container-cmd:
-  - /usr/bin/bash
+  - /sbin/init
 
 # Note that the default for c9s+ is sqlite; we can't rely on rpm being
 # in the target (it isn't in tier-0!) so turn this to host here.  This
