@@ -1,0 +1,7 @@
+releasever: stream10
+variables:
+  distro: "stream10"
+
+repos:
+  - baseos
+  - appstream

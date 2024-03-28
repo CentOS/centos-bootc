@@ -1,0 +1,21 @@
+# See Containerfile.centos-stream9 for more information.
+
+FROM quay.io/centos/centos:stream10-development as repos
+
+FROM quay.io/centos-bootc/bootc-image-builder:latest as builder
+ARG MANIFEST=centos-stream-10-tier1.yaml
+RUN --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rm -vf /buildcontext/*.repo
+# XXX: we should just make sure our in-tree c9s repo points to the c9s paths and doesn't require vars to avoid these steps entirely
+COPY --from=repos /etc/dnf/vars /etc/dnf/vars
+COPY --from=repos /etc/yum.repos.d/centos.repo c10s.repo
+COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial /etc/pki/rpm-gpg
+# rpm-ostree doesn't honor /etc/dnf/vars right now
+RUN for n in $(ls /etc/dnf/vars); do v=$(cat /etc/dnf/vars/$n); sed -ie s,\$${n},$v, c10s.repo; done
+RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared \
+    cp -a /buildcontext /src && rm -vf /src/*.repo && cp -a c10s.repo /src && ls -al /src  &&\
+    rpm-ostree compose image --cachedir=/workdir --format=ociarchive --initialize /src/${MANIFEST} /buildcontext/out.ociarchive
+
+FROM oci-archive:./out.ociarchive
+# Need to reference builder here to force ordering. But since we have to run
+# something anyway, we might as well cleanup after ourselves.
+RUN --mount=type=bind,from=builder,src=.,target=/var/tmp --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rm /buildcontext/out.ociarchive

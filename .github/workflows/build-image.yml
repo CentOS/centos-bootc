@@ -13,13 +13,13 @@ jobs:
   build-image:
     runs-on: ubuntu-latest
 
-    # Yes, this is a one-element matrix, but we may add c10s in the future soon
     strategy:
       matrix:
-        os: [centos]
         include:
           - os: centos
             version: stream9
+          - os: centos
+            version: stream10
 
     steps:
       - name: Update podman
