@@ -4,30 +4,12 @@
     "local>centos/.github:renovate-config"
   ],
   "customDatasources": {
-    "fedora-eln-compose": {
-      "defaultRegistryUrlTemplate": "https://odcs.fedoraproject.org/composes/production",
-      "format": "html"
-    },
     "c9s-compose": {
       "defaultRegistryUrlTemplate": "https://composes.stream.centos.org/development/",
       "format": "html"
     }
   },
   "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": [
-        "fedora-eln.repo",
-        "fedora-bootc-config.json"
-      ],
-      "matchStrings": [
-        "https://odcs.fedoraproject.org/composes/production/(?<currentValue>.*)/compose/(.*)",
-        "\"redhat.compose-id\": \"(?<currentValue>.*)\""
-      ],
-      "datasourceTemplate": "custom.fedora-eln-compose",
-      "depNameTemplate": "Fedora-ELN",
-      "versioningTemplate": "regex:^Fedora-ELN-(?<major>\\d{8})\\.(?<minor>\\d+)$"
-    },
     {
       "customType": "regex",
       "fileMatch": [
@@ -44,17 +26,6 @@
     }
   ],
   "packageRules": [
-    {
-      "matchDatasources": [
-        "custom.fedora-eln-compose"
-      ],
-      "extractVersion": "(?<version>.+)/$",
-      "automerge": true,
-      "schedule": [
-        "at any time"
-      ],
-      "groupName": null
-    },
     {
       "matchDatasources": [
         "custom.c9s-compose"
