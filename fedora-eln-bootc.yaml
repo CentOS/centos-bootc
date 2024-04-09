@@ -1,10 +1,10 @@
-releasever: 40
+releasever: 39
 variables:
-  distro: "fedora"
+  distro: "eln"
 
 repos:
-  - fedora-devel
-  - fedora-updates
+  - eln-baseos
+  - eln-appstream
 
 metadata:
   name: fedora-boot-tier1

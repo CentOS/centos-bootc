@@ -7,9 +7,9 @@ repos:
   - fedora-updates
 
 metadata:
-  name: fedora-boot-tier1
-  summary: Fedora Bootable Tier 1
+  name: fedora-boot-tier0
+  summary: Fedora Bootable Tier 0
 
 include:
-  - tier-1/manifest.yaml
-  - tier-1/kernel.yaml
+  - tier-0/manifest.yaml
+  - tier-0/kernel.yaml
