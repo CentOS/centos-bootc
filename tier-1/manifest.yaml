@@ -17,6 +17,8 @@ include:
 packages:
   # Include and set the default editor
   - nano
+  # And we expect this in general
+  - vim-minimal
   - nfs-utils
   # Additional firewall support; we aren't including these in RHCOS or they
   # don't exist in RHEL
