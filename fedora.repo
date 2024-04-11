@@ -74,3 +74,30 @@ gpgcheck=1
 metadata_expire=6h
 gpgkey=file:///usr/share/distribution-gpg-keys/fedora/RPM-GPG-KEY-fedora-$releasever-primary
 skip_if_unavailable=False
+
+[rawhide]
+name=Fedora - Rawhide - Developmental packages for the next Fedora release
+baseurl=https://dl.fedoraproject.org/pub/fedora/linux/development/$releasever/Everything/$basearch/os/
+        https://dl.fedoraproject.org/pub/fedora-secondary/development/$releasever/Everything/$basearch/os/
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
+enabled=1
+#metadata_expire=7d
+repo_gpgcheck=0
+type=rpm
+gpgcheck=1
+gpgkey=file:///usr/share/distribution-gpg-keys/fedora/RPM-GPG-KEY-fedora-$releasever-primary
+skip_if_unavailable=False
+
+[fedora-devel]
+name=Fedora $releasever - $basearch
+baseurl=https://dl.fedoraproject.org/pub/fedora/linux/development/$releasever/Everything/$basearch/os/
+        https://dl.fedoraproject.org/pub/fedora-secondary/development/$releasever/Everything/$basearch/os/
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
+enabled=1
+#metadata_expire=7d
+repo_gpgcheck=0
+type=rpm
+gpgcheck=1
+gpgkey=file:///usr/share/distribution-gpg-keys/fedora/RPM-GPG-KEY-fedora-$releasever-primary
+skip_if_unavailable=False
+
