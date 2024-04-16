@@ -100,4 +100,3 @@ type=rpm
 gpgcheck=1
 gpgkey=file:///usr/share/distribution-gpg-keys/fedora/RPM-GPG-KEY-fedora-$releasever-primary
 skip_if_unavailable=False
-
