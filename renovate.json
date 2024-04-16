@@ -5,7 +5,7 @@
   ],
   "customDatasources": {
     "c9s-compose": {
-      "defaultRegistryUrlTemplate": "https://composes.stream.centos.org/development/",
+      "defaultRegistryUrlTemplate": "https://composes.stream.centos.org/production/",
       "format": "html"
     }
   },
@@ -13,11 +13,11 @@
     {
       "customType": "regex",
       "fileMatch": [
-        "c9s-devel-compose.repo",
+        "c9s.repo",
         "centos-bootc-config.json"
       ],
       "matchStrings": [
-        "https://composes.stream.centos.org/development/(?<currentValue>.*)/compose/(.*)",
+        "https://composes.stream.centos.org/production/(?<currentValue>.*)/compose/(.*)",
         "\"redhat.compose-id\": \"(?<currentValue>.*)\""
       ],
       "datasourceTemplate": "custom.c9s-compose",
