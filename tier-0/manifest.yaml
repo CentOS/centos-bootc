@@ -51,7 +51,6 @@ remove-from-packages:
 include:
   - bootc.yaml
   - ostree.yaml
-  - bootc-config.yaml
   - initramfs.yaml
   - autoupdates.yaml
   - basic-fixes.yaml

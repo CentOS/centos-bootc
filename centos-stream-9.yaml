@@ -2,6 +2,5 @@ releasever: stream9
 variables:
   distro: "stream9"
 
-repos:
-  - baseos
-  - appstream
+include:
+  - centos-stream-common.yaml
