@@ -26,7 +26,7 @@
 FROM quay.io/centos/centos:stream9 as repos
 
 FROM quay.io/centos-bootc/bootc-image-builder:latest as builder
-ARG MANIFEST=centos-bootc.yaml
+ARG MANIFEST=centos-stream-9-tier1.yaml
 # XXX: we should just make sure our in-tree c9s repo points to the c9s paths and doesn't require vars to avoid these steps entirely
 COPY --from=repos /etc/dnf/vars /etc/dnf/vars
 COPY --from=repos /etc/yum.repos.d/centos.repo c9s.repo
