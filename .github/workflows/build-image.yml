@@ -18,6 +18,8 @@ jobs:
             version: stream9
           - os: centos
             version: stream10
+          - os: fedora
+            version: 40
 
     steps:
       - name: Update podman
