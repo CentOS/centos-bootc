@@ -6,5 +6,8 @@
         "redhat.id": "centos",
         "redhat.version-id": "9"
     },
-    "StopSignal": "SIGRTMIN+3"
+    "StopSignal": "SIGRTMIN+3",
+    "Volumes": {
+        "/var/lib/containers/storage": {}
+    }
 }
