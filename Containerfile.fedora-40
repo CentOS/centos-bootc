@@ -32,7 +32,8 @@ COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-* /etc/pki/rpm-gpg
 COPY . /src
 RUN rm -vf /src/*.repo
 COPY --from=repos /etc/yum.repos.d/*.repo /src
-RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rpm-ostree compose image --cachedir=/workdir --format=ociarchive --initialize /src/${MANIFEST} /buildcontext/out.ociarchive
+RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rpm-ostree compose image \
+ --image-config /buildcontext/fedora-bootc-config.json --cachedir=/workdir --format=ociarchive --initialize /src/${MANIFEST} /buildcontext/out.ociarchive
 
 FROM oci-archive:./out.ociarchive
 # Need to reference builder here to force ordering. But since we have to run

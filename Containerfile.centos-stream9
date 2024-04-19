@@ -33,7 +33,8 @@ COPY --from=repos /etc/yum.repos.d/centos.repo c9s.repo
 COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial /etc/pki/rpm-gpg
 # rpm-ostree doesn't honor /etc/dnf/vars right now
 RUN for n in $(ls /etc/dnf/vars); do v=$(cat /etc/dnf/vars/$n); sed -ie s,\$${n},$v, c9s.repo; done
-RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rpm-ostree compose image --cachedir=/workdir --format=ociarchive --initialize /buildcontext/${MANIFEST} /buildcontext/out.ociarchive
+RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared \
+    rpm-ostree compose image --image-config /buildcontext/centos-bootc-config.json --cachedir=/workdir --format=ociarchive --initialize /buildcontext/${MANIFEST} /buildcontext/out.ociarchive
 
 FROM oci-archive:./out.ociarchive
 # Need to reference builder here to force ordering. But since we have to run
