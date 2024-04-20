@@ -26,6 +26,6 @@ repos:
     hooks:
       - id: markdownlint
   - repo: https://github.com/maxbrunet/pre-commit-renovate
-    rev: 37.278.0
+    rev: 37.311.0
     hooks:
       - id: renovate-config-validator
