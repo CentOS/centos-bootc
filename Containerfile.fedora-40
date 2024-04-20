@@ -20,21 +20,20 @@
 #
 # # Why does this build process require additional privileges?
 #
-# Because it's generating a base image and uses containerization features itself.
+# Because it's generating a base image and uses containerbuildcontextization features itself.
 # In the future some of this can be lifted.
 
-FROM quay.io/centos/centos:stream9 as repos
+FROM quay.io/fedora/fedora:40 as repos
 
 FROM quay.io/centos-bootc/bootc-image-builder:latest as builder
-ARG MANIFEST=centos-stream-9-tier1.yaml
-# XXX: we should just make sure our in-tree c9s repo points to the c9s paths and doesn't require vars to avoid these steps entirely
+ARG MANIFEST=fedora-bootc.yaml
 COPY --from=repos /etc/dnf/vars /etc/dnf/vars
-COPY --from=repos /etc/yum.repos.d/centos.repo c9s.repo
-COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial /etc/pki/rpm-gpg
-# rpm-ostree doesn't honor /etc/dnf/vars right now
-RUN for n in $(ls /etc/dnf/vars); do v=$(cat /etc/dnf/vars/$n); sed -ie s,\$${n},$v, c9s.repo; done
-RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared \
-    rpm-ostree compose image --image-config /buildcontext/centos-bootc-config.json --cachedir=/workdir --format=ociarchive --initialize /buildcontext/${MANIFEST} /buildcontext/out.ociarchive
+COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-* /etc/pki/rpm-gpg
+COPY . /src
+RUN rm -vf /src/*.repo
+COPY --from=repos /etc/yum.repos.d/*.repo /src
+RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rpm-ostree compose image \
+ --image-config /buildcontext/fedora-bootc-config.json --cachedir=/workdir --format=ociarchive --initialize /src/${MANIFEST} /buildcontext/out.ociarchive
 
 FROM oci-archive:./out.ociarchive
 # Need to reference builder here to force ordering. But since we have to run

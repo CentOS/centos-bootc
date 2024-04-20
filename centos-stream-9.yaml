@@ -2,18 +2,5 @@ releasever: stream9
 variables:
   distro: "stream9"
 
-repos:
-  - baseos
-  - appstream
-  # And pull in the devel composes optionally to faster track things;
-  # TODO make a container that tracks this too
-  - baseos-devel
-  - appstream-devel
-  # ONLY things here to be faster than the devel composes
-  - copr-fedora-bootc-fasttracks
-
-repo-packages:
-  - repo: appstream-devel
-    packages:
-      - bootc
-      - bootupd
+include:
+  - centos-stream-common.yaml

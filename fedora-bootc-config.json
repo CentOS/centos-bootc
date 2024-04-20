@@ -1,0 +1,9 @@
+{
+    "Labels": {
+        "containers.bootc": "1",
+        "bootc.diskimage-builder": "quay.io/centos-bootc/bootc-image-builder",
+        "redhat.id": "fedora",
+        "redhat.version-id": "40"
+    },
+    "StopSignal": "SIGRTMIN+3"
+}

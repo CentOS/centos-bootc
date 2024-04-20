@@ -3,8 +3,8 @@ variables:
   distro: "fedora"
 
 repos:
-  - fedora-devel
-  - fedora-updates
+  - fedora
+  - updates
 
 metadata:
   name: fedora-boot-tier1
