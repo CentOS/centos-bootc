@@ -29,11 +29,16 @@ FROM quay.io/centos-bootc/bootc-image-builder:latest as builder
 ARG MANIFEST=fedora-bootc.yaml
 COPY --from=repos /etc/dnf/vars /etc/dnf/vars
 COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-* /etc/pki/rpm-gpg
+# The input git repository has .repo files committed to git rpm-ostree has historically
+# emphasized that.  But here, we are fetching the repos from the container base image.
+# So copy the source, and delete the hardcoded ones in git, and use the container base
+# image ones.  We can drop the ones commited to git when we hard switch to Containerfile.
 COPY . /src
+WORKDIR /src
 RUN rm -vf /src/*.repo
 COPY --from=repos /etc/yum.repos.d/*.repo /src
 RUN --mount=type=cache,target=/workdir --mount=type=bind,rw=true,src=.,dst=/buildcontext,bind-propagation=shared rpm-ostree compose image \
- --image-config /buildcontext/fedora-bootc-config.json --cachedir=/workdir --format=ociarchive --initialize /src/${MANIFEST} /buildcontext/out.ociarchive
+ --image-config fedora-bootc-config.json --cachedir=/workdir --format=ociarchive --initialize ${MANIFEST} /buildcontext/out.ociarchive
 
 FROM oci-archive:./out.ociarchive
 # Need to reference builder here to force ordering. But since we have to run
