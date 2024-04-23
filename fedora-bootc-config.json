@@ -5,5 +5,8 @@
         "redhat.id": "fedora",
         "redhat.version-id": "40"
     },
-    "StopSignal": "SIGRTMIN+3"
+    "StopSignal": "SIGRTMIN+3",
+    "Volumes": {
+        "/var/lib/containers/storage": {}
+    }
 }
