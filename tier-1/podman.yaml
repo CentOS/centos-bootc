@@ -1,7 +1,0 @@
-# Core podman bits
-
-packages:
-  - crun
-  - podman
-  - container-selinux
-  - skopeo
