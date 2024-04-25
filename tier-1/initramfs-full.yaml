@@ -1,8 +1,0 @@
-# Configuration for the "tier-1" initramfs
-postprocess:
-  - |
-    #!/usr/bin/env bash
-    mkdir -p /usr/lib/dracut/dracut.conf.d
-    cat > /usr/lib/dracut/dracut.conf.d/30-bootc-tier-1.conf << 'EOF'
-    dracutmodules+=" lvm crypt "
-    EOF
