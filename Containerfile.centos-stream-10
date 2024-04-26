@@ -1,4 +1,4 @@
-# See Containerfile.centos-stream9 for more information.
+# See Containerfile.centos-stream-9 for more information.
 
 FROM quay.io/centos/centos:stream10-development as repos
 
