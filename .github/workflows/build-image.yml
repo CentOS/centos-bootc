@@ -15,9 +15,9 @@ jobs:
       matrix:
         include:
           - os: centos
-            version: stream9
+            version: stream-9
           - os: centos
-            version: stream10
+            version: stream-10
 
     steps:
       - name: Update podman
