@@ -11,6 +11,8 @@ metadata:
   links:
     - url: https://centos.github.io/centos-bootc/
       title: documentation
+    - url: https://docs.fedoraproject.org/en-US/bootc/
+      title: Fedora bootc documentation
     - url: https://app.slack.com/client/E030G10V24F/C02CU30L7GF
       title: slack channel
       icon: chat
